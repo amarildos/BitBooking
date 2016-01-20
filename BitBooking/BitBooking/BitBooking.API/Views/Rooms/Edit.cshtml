@@ -1,0 +1,63 @@
+﻿@model BitBooking.DAL.Models.Room
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+<div class="container">
+<h2>Edit</h2>
+
+<form novalidate="novalidate" ng-submit="SRCtrl.SellerService.editRoom()" class="form-horizontal">
+
+    <div class="form-horizontal">
+        <h4>Room</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberOfRooms, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumberOfRooms, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditRoom.NumberOfRooms", @required = "required", @class = "form-control", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.NumberOfRooms, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditRoom.Price", @required = "required", @class = "form-control", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomCapacity, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditRoom.RoomCapacity", @required = "required", @class = "form-control", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.RoomCapacity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomDetails, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditRoom.RoomDetails", @required = "required", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoomDetails, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit Room" class="btn btn-default" />
+            </div>
+        </div>
+
+</form>
+
+<div>
+    <center>
+        <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+    </center>
+</div>
+</div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.AccomodationType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="table_id">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationTypeName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="background-color:black">
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccomodationTypeName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AccomodationTypeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AccomodationTypeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AccomodationTypeId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section Scripts{
+
+    <script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+
+    </script>
+
+}

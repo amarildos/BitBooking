@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitBooking.DAL", "BitBooking.DAL\BitBooking.DAL.csproj", "{E72F1741-9B24-4F11-9F34-A0C202881633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitBooking.MVC", "BitBooking.MVC\BitBooking.MVC.csproj", "{13AAD0EB-89D3-4FBA-97B1-AF7E7B659FB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitBooking.API", "BitBooking.API\BitBooking.API.csproj", "{4D8895E0-E6C9-4DB5-AD3A-AE3AF0E44F71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitBookingTest", "BitBookingTest\BitBookingTest.csproj", "{96926CE2-BF1C-455A-8053-D317F90EBBB9}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://bitcamptfs02.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BitBooking.DAL\\BitBooking.DAL.csproj
+		SccProjectName1 = BitBooking.DAL
+		SccLocalPath1 = BitBooking.DAL
+		SccProjectUniqueName2 = BitBooking.MVC\\BitBooking.MVC.csproj
+		SccProjectName2 = BitBooking.MVC
+		SccLocalPath2 = BitBooking.MVC
+		SccProjectUniqueName3 = BitBooking.API\\BitBooking.API.csproj
+		SccProjectName3 = BitBooking.API
+		SccLocalPath3 = BitBooking.API
+		SccProjectUniqueName4 = BitBookingTest\\BitBookingTest.csproj
+		SccProjectName4 = BitBookingTest
+		SccLocalPath4 = BitBookingTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E72F1741-9B24-4F11-9F34-A0C202881633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72F1741-9B24-4F11-9F34-A0C202881633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72F1741-9B24-4F11-9F34-A0C202881633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72F1741-9B24-4F11-9F34-A0C202881633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13AAD0EB-89D3-4FBA-97B1-AF7E7B659FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AAD0EB-89D3-4FBA-97B1-AF7E7B659FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AAD0EB-89D3-4FBA-97B1-AF7E7B659FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AAD0EB-89D3-4FBA-97B1-AF7E7B659FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8895E0-E6C9-4DB5-AD3A-AE3AF0E44F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8895E0-E6C9-4DB5-AD3A-AE3AF0E44F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8895E0-E6C9-4DB5-AD3A-AE3AF0E44F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8895E0-E6C9-4DB5-AD3A-AE3AF0E44F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96926CE2-BF1C-455A-8053-D317F90EBBB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96926CE2-BF1C-455A-8053-D317F90EBBB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96926CE2-BF1C-455A-8053-D317F90EBBB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96926CE2-BF1C-455A-8053-D317F90EBBB9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

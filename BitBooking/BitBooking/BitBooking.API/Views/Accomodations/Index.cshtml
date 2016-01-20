@@ -1,0 +1,232 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.Accomodation>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<!-- banner -->
+<div class="banner" id="banner">
+    <!-- container -->
+    <div class="container">
+        <div class="top-nav">
+            <span class="menu">MENU</span>
+           <h3>@ViewBag.reservation</h3>
+            <ul class="nav1">
+                <li><a href="#banner" class="active">Home</a></li>
+                <li><a href="#topHotels" class="scroll">Top Accomodations</a></li>
+                <li><a href="#addressLink" class="scroll">Contact</a></li>
+            </ul>
+
+
+        </div>
+        <div class="banner-grids">
+            <div class="banner-left">
+                <h1>
+                    <a href="#banner">BitBooking</a>
+                </h1>
+                <p>The Best Travel Portal</p>
+            </div>
+            <div class="banner-right">
+
+                <div id="top" class="callbacks_container">
+                    <ul class="rslides" id="slider3">
+                        <li>
+                            <div class="banner-right-info">
+                                <h3>Our story</h3>
+                                <p>Established in 2015, BitBooking.com guarantees the best prices for any type of property, from small, family-run bed and breakfasts to executive apartments and five-star luxury suites. Independent accommodations are also </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="banner-right-info">
+                                <h3>Our story</h3>
+                                <p>specifically a focus of Villas.com, a sister site recently launched by BitBooking.com. Truly international, BitBooking.com is available in more than 40 languages, and offers 784,988 active properties in 221 countries and territories.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- //container -->
+</div>
+<!-- banner -->
+<br />
+<br />
+<br />
+<br />
+<!-- destination -->
+<div class="container">
+    <div class="divider">
+        <div class="destination-info">
+            <h3>Find your destination:</h3>
+            <br />
+            <br />
+            <form method="get">
+                <label>Destination / hotel name: </label>
+                <input type="text" name="searchString" />
+                @Html.ValidationMessage("searchString", "*", new { @style = "color:#FF0000;" })
+
+                <label>Arrival date: </label>
+                <input type="date" name="arrivalDate" />
+                @Html.ValidationMessage("arrivalDate", "*", new { @style = "color:#FF0000;" })
+
+                <label>Departure date: </label>
+                <input type="date" name="departureDate" />
+                @Html.ValidationMessage("departureDate", "*", new { @style = "color:#FF0000;" })
+
+                <br />
+                <input class="hidden" id="userIdFromAjax" type="text" name="TempUserId" />
+                <br />
+                <input class="btn btn-primary" type="submit" name="submit" value="Search Accomodations" />
+                <br />
+                @Html.ValidationSummary("Message:", new { @style = "color:#FF0000;" })
+            </form>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<hr />
+<div class="destination">
+    <!-- container -->
+    <div class="container" id="topHotels">
+
+              <!-- portfolio section -->
+        <section id="portfolio" class="col-lg-12">
+
+
+            <div class="destination-info">
+                <div class="sec-title text-center wow animated fadeInDown">
+                    <h3>Top Accomodations</h3>
+                    <p>Our Vision: BitBooking.com is an informative, user-friendly website – that guarantees the best available prices. Our goal is to provide business and leisure travelers with the most accessible and cost-effective way of discovering and booking the broadest selection of accommodations, in every corner of the world.</p>
+                </div>
+                <!--Begin of FOREACH LOOP for Acoomodation list on Index page-->
+                @foreach (var accomodation in Model)
+                {
+                    <div class=" col-lg-4">
+                        <div class="project-wrapper wow animated fadeInUp ">
+                            <div class="portfolio-item">
+                                @*//Accomodation NAME*@
+                                <h3 class="accName">@Html.ActionLink(accomodation.AccomodationName, "Details", new { id = accomodation.AccomodationId }, new { @class = "accomodationNames" })</h3>
+                                <a href='@Url.Action("Details", "Accomodations", new { id = accomodation.AccomodationId })' class="img-responsive"  >
+
+                                    @try
+                                    {
+                                        <img src='@accomodation.ListOfPhotos.FirstOrDefault(x => x.AccomodationId == accomodation.AccomodationId && x.Priority == 1).PhotoUrl' class="accImage" />
+                                    }
+                                    catch
+                                    {
+                                        <img src="http://www.holidaycheck.com/assets/4.21.0/images/dummy-pictures/hotel_450x310.png" />
+
+                                    }
+                                </a>
+
+                                <a href='@Url.Action("Details", "Accomodations", new { id = accomodation.AccomodationId })'>
+                                    <figcaption class="mask">
+
+                                        <p>
+                                            @*//Accomodation STAR RATING*@
+                                            Rating: @Html.DisplayFor(modelItem => accomodation.StarRating) stars
+                                            <br />
+                                            @*//Accomodation STAR RATING*@
+                                            Number of rooms: @Html.DisplayFor(modelItem => accomodation.NumberOfRooms)
+                                            <br />
+                                            @*//Accomodation address (COUNTRY)*@
+                                            Country: @Html.DisplayFor(modelItem => accomodation.AccomodationInfo.Country)
+                                            <br /><br />
+
+                                        </p>
+                                    </figcaption>
+                                </a>
+
+                            </div>
+
+                            <div class="accDesc ">
+                                @*//Accomodation DESCRIPTION*@
+                                @Html.DisplayFor(modelItem => accomodation.Description)
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+            </div>
+
+        </section>
+        <!-- end portfolio section -->
+
+
+
+        <!--START - PRIMITIVNI SEARCH BOX SA IMENOM I DATUMIMA (ArrivalDate i DepartureDate) HOTELA-->
+        <!--END - PRIMITIVNI SEARCH BOX SA IMENOM I DATUMIMA (ArrivalDate i DepartureDate) HOTELA-->
+        @*<div class="col-md-3 destination-grid">
+                <img src="~/Images/5.jpg" alt="" />
+                <p>Phasellus nisi enim, tempus sed mauris ut consectetur mattis turpis donec neque dolor convallis aliquet leo id scelerisque feugiat ligula.</p>
+            </div>
+            <div class="col-md-3 destination-grid">
+                <img src="~/Images/6.jpg" alt="" />
+                <p>Phasellus nisi enim, tempus sed mauris ut consectetur mattis turpis donec neque dolor convallis aliquet leo id scelerisque feugiat ligula.</p>
+            </div>
+            <div class="col-md-3 destination-grid">
+                <img src="~/Images/7.jpg" alt="" />
+                <p>Phasellus nisi enim, tempus sed mauris ut consectetur mattis turpis donec neque dolor convallis aliquet leo id scelerisque feugiat ligula.</p>
+            </div>*@
+        <div class="clearfix"> </div>
+    </div>
+
+</div>
+<!-- //container -->
+
+<!-- //destination -->
+
+@section scripts{
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+        //      $.ajaxSetup({
+        //            beforeSend: function (xhr) {
+
+        //var tokenKey = 'accessToken';
+        //var token = sessionStorage.getItem(tokenKey);
+        //var headers = {};
+        // if (token) {
+        //       headers.Authorization = 'Bearer ' + token;
+        //     }
+        //       xhr.setRequestHeader("Authorization", 'Bearer ' + token);
+
+        //     }
+        //   });
+        var tokenKey = 'accessToken';
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+
+            $.ajax({
+                method: "POST",
+                url: "/api/values"
+            }).success(function (response) {
+                console.log("SUCCESS USER ID RECEIVED!");
+                //console.log(response);
+
+                $("#userIdFromAjax").val(response);
+                console.log($("#userIdFromAjax").val());
+
+            }).error(function (response) {
+                console.log("NOT LOGGED IN!");
+            });
+        }
+        });
+    
+
+</script>
+}

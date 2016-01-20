@@ -1,0 +1,48 @@
+﻿
+<!-- Price section -->
+<section id="price">
+    <div class="container">
+        <div class="row">
+
+            <div class="sec-title text-center wow animated fadeInDown">
+                <div class="letters"><br />
+                    <h8>Reservation process</h8>
+                    <p>Please confirm the reservation of this room.</p>
+                </div>
+            </div>
+
+            <div class="confirmReserve">
+                <div class="col-md-12 wow animated fadeInLeftBig" data-wow-delay="0.4s">
+                    <div class="price-table featured text-center">
+                        <span>
+                            <img src="{{accomodationListCtrl.service.searchConfirmationResult.PhotoUrl}}" style="width:620px;" />
+                        </span>
+
+                        <span>{{accomodationListCtrl.service.searchConfirmationResult.AccomodationName}}</span>
+                        <div class="value">
+                            <span>€</span>
+                            <span>{{accomodationListCtrl.service.searchConfirmationResult.TempTotalPrice | number:2 }}</span><br>
+                            <span>Total Price</span>
+                        </div>
+                        <ul>
+                            <li><strong>Price Per Night: </strong> {{accomodationListCtrl.service.searchConfirmationResult.Price | number:2 }} €</li>
+                            <li><strong>Room Capacity: </strong> {{accomodationListCtrl.service.searchConfirmationResult.RoomCapacity}} person/s</li>
+                            <li><strong>Room Type Name: </strong>{{accomodationListCtrl.service.searchConfirmationResult.RoomType_Name}}</li>
+                            <li><strong>Arrival Date: </strong> {{accomodationListCtrl.service.searchConfirmationResult.TempArrivalDate | date:"dd/MM/yyyy"}} </li>
+                            <li><strong>Departure Date: </strong> {{accomodationListCtrl.service.searchConfirmationResult.TempDepartureDate | date:"dd/MM/yyyy"}} </li>
+
+
+                            <div class="form-actions no-color">
+                                <input type="submit" ng-click="accomodationListCtrl.service.reserveRoomConfirmation()" value="Confirm Reservation" class="btn btn-lg btn-info" /> |
+                                <button ui-sref="home" class="btn btn-lg btn-effect">Search Again</button>
+                            </div>
+                            <br />
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- end Price section -->

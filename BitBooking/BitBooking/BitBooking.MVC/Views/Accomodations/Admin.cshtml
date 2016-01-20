@@ -1,0 +1,77 @@
+﻿@model BitBooking.DAL.Models.Accomodation
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>ADMINISTRATION  PANEL FOR YOUR HOTEL: @Model.AccomodationName</h2>
+
+<hr/>
+
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail" >
+            <img src="http://www.holidayinn-pattaya.com/wp-content/uploads/2014/05/Ocean-View-King-Room-1.jpg" style="width:250px; height:250px" alt="...">
+            <div class="caption">
+                <h3>Rooms</h3>
+                <p>Here you Can Manage Your Rooms in The Hotel. Also you Can Add New Ones</p>
+                <p><a href="/Rooms/" class="btn btn-primary" role="button">View</a> <a href="/Rooms/Create" class="btn btn-default" role="button">Create new</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail" >
+            <img src="http://workforce.resortdata.com/wp-content/uploads/2014/07/reservations-icon-300x241.png" style="width:250px; height:250px" alt="...">
+            <div class="caption">
+                <h3>Reservations</h3>
+                <p>Here you can manage reservations and make new ones"</p>
+                <p><a href="/RoomAvailabilities/" class="btn btn-primary" role="button">View</a> <a href="/RoomAvailabilities/Create" class="btn btn-default" role="button">Create new</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="https://openclipart.org/image/2400px/svg_to_png/103345/special-price-sticker.png" style="width:250px; height:250px" alt="...">
+            <div class="caption">
+                <h3>Special Price</h3>
+                <p>Here you can change and make new Special promotions and prices"</p>
+                <p><a href="/RoomPrices/" class="btn btn-primary" role="button">View</a> <a href="/RoomPrices/Create" class="btn btn-default" role="button">Create new</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="http://www.teampodcast.com/wp-content/uploads/2015/01/services.png" style="width:250px; height:250px" alt="...">
+            <div class="caption">
+                <h3>Services</h3>
+                <p>Administrate Your Services Add New Ones And Delete old ones! Or Just See them</p>
+                <p><a href="/AccomodationServices/" class="btn btn-primary" role="button">View</a> <a href="/AccomodationServices/Create" class="btn btn-default" role="button">Add new</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="http://comps.canstockphoto.com/can-stock-photo_csp15435407.jpg" style="width:250px; height:250px" alt="...">
+            <div class="caption">
+                <h3>Facilities</h3>
+                <p>Administrate Your Facilities. Add new One Or Edit ones that exist already!</p>
+                <p><a href="/AccomodationFacilities/" class="btn btn-primary" role="button">View</a> <a href="/AccomodationFacilities/Create" class="btn btn-default" role="button">Add new</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="http://www.downsyndromeprenataltesting.com/wp-content/uploads/2013/10/Sign-Information.png" style="width:250px; height:250px" alt="...">
+            <div class="caption">
+                <h3>Accomodation Informations</h3>
+                <p>Manage your Accomodation INformation in case of change!</p>
+                <p><a href="/AccomodationInfoes/" class="btn btn-primary" role="button">View</a> <a href="/AccomodationInfoes/Edit/@Model.AccomodationInfoId" class="btn btn-default" role="button">Change</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+

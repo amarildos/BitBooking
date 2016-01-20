@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.UserComment>
+
+@{
+ 
+    Layout = null;
+}
+
+
+
+
+
+
+<div>
+    <center><h4>Guest Comments</h4></center>
+    <hr />
+    <dl class="dl-horizontal">    
+
+        @foreach (var item in Model)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Comment)
+            </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.UserName)
+    </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Rating)
+    </dt>
+                <dd>
+                    <input id="input-2aa" class="rating" name="Ratinga" data-min="0" data-max="5" data-step="1" data-stars=5 data-glyphicon="false" data-show-clear="false" data-show-caption="false" data-readonly="true" value="@item.Rating">
+                </dd>
+            
+    @*<dt>
+        
+    </dt>
+         <dd>*@
+             <input type="submit" id="@item.AccomodationId" class="btn btn-danger" data-id="@item.UserCommentId" value="Report Comment " style="width:auto" />
+         @*</dd>*@
+
+    <hr/>
+        }
+
+    </dl>
+</div>
+@Scripts.Render("~/bundles/bootstrap")
+
+<script>
+    $(document).ready(function () {
+        $('.btn-danger').on('click', function (event) {
+            var button = $(event.relatedTarget);
+            var thisObject = $(this);
+            
+            var commentId = $(this).data("id");
+            var ApplicationUserId = $("#ApplicationUserId").val();
+
+            var accomodationIdObject = $(this).valueOf("id");
+            var accomdoationId = accomodationIdObject.attr("id")
+            
+            console.log("App user id from comment:" + ApplicationUserId);
+            $.ajax({
+                method: "POST",
+                url: "/UserComments/Report/",
+                data: { 'commentId': commentId, 'ApplicationUserId': ApplicationUserId, 'AccomodationIdValue': accomdoationId }
+            }).success(function (response)
+            {
+                console.log("SUCCESS RESPONSE TEXT: " + response.responseText);
+                thisObject.val("REPORTED");
+                
+            }).error(function (response)
+            {
+
+                console.log("ERROR RESPONSE TEXT: " + response.responseText);
+                thisObject.val(response.statusText);
+                thisObject.prop('disabled', true);
+
+            });
+        });
+    });
+</script>
+    

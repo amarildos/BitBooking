@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.Room>
+    @{Layout = null;}
+<table class="table">
+
+    <div class="row" class="zeko">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    @try
+                    {
+                        <img style="height:250px" src="@item.RoomType.ListOfPhotos.FirstOrDefault(x=>x.RoomTypeId==item.RoomTypeId && x.AccomodationId==item.AccomodationId && x.Priority==4).PhotoUrl" alt="...">
+                    }
+                    catch
+                    {
+                        <img style="height:250px"  src="http://led.lginnotek.com/images/front/temp/noImageAvailable.jpg " alt="...">
+                    }
+                    <div class="caption">
+                        <h3>@item.RoomType.RoomTypeName</h3>
+                        <p>@item.Accomodation.AccomodationName : $ @item.Price </p>
+                        <p><a href="#" class="btn btn-primary" role="button">Rooms: @item.NumberOfRooms</a><a href="#" data-id="@item.RoomTypeId" class="btn btn-default" data-toggle="modal" data-target="#myModelPhoto" role="button">Add pictures</a></p>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <div class="lateradded"></div>
+    </div>
+
+</table>

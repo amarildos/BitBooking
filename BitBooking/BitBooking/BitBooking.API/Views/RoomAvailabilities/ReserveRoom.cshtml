@@ -1,0 +1,59 @@
+﻿@model BitBooking.DAL.Models.Room
+
+<!-- Price section -->
+<section id="price">
+    <div class="container">
+        <div class="row">
+
+            <div class="sec-title text-center wow animated fadeInDown">
+                <h2>Reservation process</h2>
+                <label>Please confirm the reservation of this room.</label>
+
+                <p>@Html.ValidationSummary("Message:", new { @style = "color:#FF0000;" })</p>
+            </div>
+
+
+            <div class="col-md-12 wow animated fadeInUpBig" data-wow-delay="0.4s">
+                <div class="price-table featured text-center">
+                    @try
+                    {
+                        <span>
+                            <img src="@Model.Accomodation.ListOfPhotos[5].PhotoUrl" />
+                        </span>
+                    }
+                    catch { }
+                    
+                    <span>@Html.DisplayFor(model => model.Accomodation.AccomodationName)</span>
+                    <div class="value">
+                        <span>€</span>
+                        <span>@Html.DisplayFor(model => model.TempTotalPrice)</span><br>
+                        <span>Total Price</span>
+                    </div>
+                    <ul>
+                        <li><strong>@Html.LabelFor(model => model.Price) :</strong> @Html.DisplayFor(model => model.Price) €</li>
+                        <li><strong>@Html.LabelFor(model => model.RoomCapacity) :</strong> @Html.DisplayFor(model => model.RoomCapacity) person/s</li>
+                        <li><strong>@Html.LabelFor(model => model.RoomType.RoomTypeName) :</strong> @Html.DisplayFor(model => model.RoomType.RoomTypeName)</li>
+                        <li><strong>@Html.LabelFor(model => model.TempArrivalDate) :</strong> @Html.DisplayFor(model => model.TempArrivalDate) </li>
+                        <li><strong>@Html.LabelFor(model => model.TempDepartureDate) :</strong> @Html.DisplayFor(model => model.TempDepartureDate) </li>
+                        
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Confirm Reservation" class="btn btn-lg btn-info" /> |
+                                @Html.ActionLink("Search again", "Index", "Accomodations", null, new { @class = "btn btn-lg btn-effect" })
+                            </div>
+                            <br/>
+                        }
+                        <li>@Html.ValidationMessage("TempUserId", "", new { @style = "color:white;" })</li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- end Price section -->

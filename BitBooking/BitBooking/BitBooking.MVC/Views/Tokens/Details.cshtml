@@ -1,0 +1,43 @@
+﻿@model BitBooking.DAL.Models.Token
+
+@{
+    ViewBag.Title = "Details";
+    //sanjin likes to change things
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Token</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Used)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Used)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccomodationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccomodationId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TokenId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

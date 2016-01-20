@@ -1,0 +1,147 @@
+﻿<img src="/Images/keyboard.png" style="width:100%"/>
+        <br /><br />
+        <!--START - SEARCH ACCOMODATION FORM-->
+       
+
+   
+
+    <!--END - SEARCH ACCOMODATION FORM-->
+
+
+
+<!-- Price section -->
+<!--<section id="price">
+    <div class="container">
+        <div class="row"><br />
+           
+                    <div class="sec-title text-center wow animated fadeInDown">
+                        <div class="letters">
+                            <h8>List of available rooms</h8>
+                        </div>
+            </div>
+
+            
+
+            <div class="col-md-4 wow animated fadeInUp" data-wow-delay="0.5s" ng-repeat="result in accomodationListCtrl.service.searchResults">
+                <div class="price-table featured text-center">
+
+                    <center> <h3>{{result.AccomodationName}}</h3> </center>
+                    <center> <h4> Star Rating: {{result.AccommodationStars}}</h4></center>
+                    <div class="value">
+                        <span>€</span>
+                        <span>{{result.TempTotalPrice | number:2 }}</span><br>
+                        <span>Total price</span><br />
+                        <span>Price per night: {{result.Price | number:2 }}</span>
+                    </div>
+                    <ul>
+                        <li><strong>Room type name :</strong> {{result.RoomType_Name}}</li>
+                        <li><strong>Room capacity :</strong> {{result.RoomCapacity}} person/s</li>
+                        <li><strong>Arrival Date: </strong> {{result.TempArrivalDate | date:"dd/MM/yyyy"}}</li>
+                        <li><strong>Departure Date: :</strong> {{result.TempDepartureDate | date:"dd/MM/yyyy"}}</li>
+
+                                <li ng-click="accomodationListCtrl.service.reserveRoom($index)"><button class="play-icon btn btn-lg btn-default">Confirm Reservation</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+<!-- end Price section -->
+
+<!--NEW SEARCH RESULTS-->
+<div class="container">
+    <div class="srz">
+    
+        <div class="col-md-12 wow animated fadeInUp" data-wow-delay="0.5s">
+
+            <ul class="booking-list" ng-repeat="result in accomodationListCtrl.service.searchResults">
+                <li>
+                    <a class="booking-item" href="">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="booking-item-img-wrap">
+                                    <img src="{{result.PhotoUrl}}" width="200px" alt="Image Alternative text" title="LHOTEL PORTO BAY SAO PAULO suite lhotel living room" />
+                                    <!--<div class="booking-item-img-num"><i class="fa fa-picture-o"></i>29</div>-->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="booking-item-rating">
+
+                                    <ul class="icon-group booking-item-rating-stars" ng-show="result.AccommodationStars == 5">
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icon-group booking-item-rating-stars" ng-show="result.AccommodationStars == 4">
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icon-group booking-item-rating-stars" ng-show="result.AccommodationStars == 3">
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icon-group booking-item-rating-stars" ng-show="result.AccommodationStars == 2">
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="icon-group booking-item-rating-stars" ng-show="result.AccommodationStars == 1">
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+
+                                    <span class="booking-item-rating-number"><b>{{result.AccommodationStars}}</b></span><small>Stars</small>
+                                </div>
+                                <h5 class="booking-item-title">{{result.AccomodationName}}</h5>
+                                <p class="booking-item-address"><i class="fa fa-calendar"></i> Arrival  : {{result.TempArrivalDate | date:"dd/MM/yyyy"}}</p>
+                                <p class="booking-item-address"><i class="fa fa-calendar"></i> Departure: {{result.TempDepartureDate | date:"dd/MM/yyyy"}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="booking-item-price-from">Total Price: {{result.TempTotalPrice | number:2 }} </span><span class="booking-item-price">{{result.Price | number:2 }}</span><span>/night</span><br /><span class="btn btn-warning" ng-click="accomodationListCtrl.service.reserveRoom($index)">Book Now</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</div>

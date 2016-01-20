@@ -1,0 +1,62 @@
+﻿<br />
+<br />
+
+
+<div class="container">
+    <div class="sec-title text-center wow animated fadeInDown">
+        <div class="letters">
+            <center>
+                <h8 ng-show="logCtrl.userService.isSeller">You are now logged in as Seller!</h8>
+                <h8 ng-hide="logCtrl.userService.isSeller">You are now logged in as Buyer!</h8>
+            </center>
+        </div>
+</div>
+</div>
+
+    <div class="hotelDetails1"><br />
+        <div class="container hotelDetails">
+            
+                <div class="row">
+
+
+                    <div class="col-md-4">
+                        <br />
+                        <img src="/Images/person-icon.png" alt="" class="img-rounded img-responsive" style="height:200px; width:200px; float:right" /><br />
+                    </div>
+                    <div class="col-md-6">
+                        <br /><br /><br />
+                        <ul class="list-group">
+                            <li class="list-group-item">User email:<strong> {{logCtrl.userService.username}}</strong></li>
+                            <li class="list-group-item"><i class="glyphicon glyphicon-info-sign"></i> {{logCtrl.userService.profilename}} {{logCtrl.userService.profilelastname}}</li>
+                            <li class="list-group-item"><i class="glyphicon glyphicon-phone"></i>{{logCtrl.userService.profilephonenumber}}</li>
+                            <li class="list-group-item"><i class="glyphicon glyphicon-map-marker"></i>{{logCtrl.userService.profilecountry}}</li>
+                        </ul>
+                    </div>
+
+                </div><hr />
+
+                <div class="buttonRow">
+                    <center>
+                        <button class="btn btn-default" ng-click="logCtrl.userService.showEdit()">Edit Profile</button>
+                        <button class="btn btn-default" ng-click="logCtrl.userService.showReservations()">My Reservations</button>
+                        <button class="btn btn-default" ng-click="logCtrl.userService.showComments()">My Comments</button>
+                    </center>
+                </div><br />
+            
+         
+
+
+            <div class="row">
+
+                <div class="col-md-12" ng-show="logCtrl.userService.edit">
+                    <div ui-view="edit"></div>
+                </div>
+                <div class="col-md-12" ng-show="logCtrl.userService.reservation">
+                    <div ui-view="reservation"></div>
+                </div>
+                <div class="col-md-12" ng-show="logCtrl.userService.comments">
+                    <div ui-view="comments"></div>
+                </div>
+            </div>
+        </div><br />
+</div>

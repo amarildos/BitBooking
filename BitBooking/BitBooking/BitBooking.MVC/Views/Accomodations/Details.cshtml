@@ -1,0 +1,419 @@
+﻿@model BitBooking.DAL.Models.Accomodation
+
+@{
+    ViewBag.Title = "Details";
+}
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+<h2>Details</h2>
+
+
+    <div class="col-lg-12">
+        <div class="col-sm-5">
+            <h4>Accomodation</h4>
+            <hr />
+            <input type="text" class="gugl hidden"  value="@Model.AccomodationInfo.City" />
+            <input type="text" class="guglid hidden" value="@Model.AccomodationId" />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationType.AccomodationTypeName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationType.AccomodationTypeName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.StarRating)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StarRating)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumberOfRooms)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfRooms)
+                </dd>
+
+                @foreach (var accomodation in Model.ListOfAccomodationFacilities)
+                {
+                    <br />
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.Description)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.StartHours)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.StartHours)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.EndHours)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.EndHours)
+                    </dd>
+                    <br />
+                }
+                @foreach (var accomodation in Model.ListOfAccomodationServices)
+                {
+                    <br />
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.AccomodationServiceType.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.AccomodationServiceType.Name)
+                    </dd>
+
+                    <br />
+                }
+                @foreach (var accomodation in Model.ListOfRooms)
+                {
+                    <br />
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.RoomType.RoomTypeName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.RoomType.RoomTypeName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.NumberOfRooms)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.NumberOfRooms)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.Price)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => accomodation.RoomCapacity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => accomodation.RoomCapacity)
+                    </dd>
+                    <br />
+                }
+
+
+
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.Address)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.City)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.Country)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.Country)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.Email)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.Phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.Phone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccomodationInfo.PostalCode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AccomodationInfo.PostalCode)
+                </dd>
+                <br />
+
+            </dl>
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.AccomodationId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+
+    <div class="col-sm-7">
+        <style>
+            #map_canvas img {
+                max-width: none;
+            }
+        </style>
+
+        <!-- This css is to give a nice big popup "info window" when a marker is clicked on the map -->
+        <style>
+            .infoDiv {
+                height: 200px;
+                width: 300px;
+                -webkit-user-select: none;
+                background-color: white;
+            }
+        </style>
+
+
+        <div id="map_canvas" style="height:300px; margin-top:20px"></div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script>
+
+
+
+
+                $(document).ready(function () {
+                    Initialize();
+                });
+
+                // Where all the fun happens
+                function Initialize() {
+
+                    // Google has tweaked their interface somewhat - this tells the api to use that new UI
+                    google.maps.visualRefresh = true;
+                    var Thiscity = new google.maps.LatLng(53.408841, -2.981397);
+                    var nesto = $('.gugl').val();
+                    var nesto2 = $('.guglid').val();
+                    var map;
+                    console.log(nesto);
+                    var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + nesto;
+                    //   var url = "maps.googleapis.com/maps/api/geocode/json?address=+""+"&sensor=true_or_false";
+                    function change() {
+                        $.ajax({ url: url }).success(function (msg) {
+                            //console.log("proslo");
+
+                            console.log(msg.results[0].geometry.location.lat);
+                            console.log(msg.results[0].geometry.location.lng);
+                            console.log(Thiscity);
+                            Thiscity = new google.maps.LatLng(msg.results[0].geometry.location.lat, msg.results[0].geometry.location.lng);
+
+                            console.log(Thiscity);
+                            //  var studentName = $('a[href="/Students/Details/' + id + ' "]').text();
+                            //$('#student-name').html(studentName);
+                            //console.log(studentName);
+
+                            //   var mapOptions = {
+                            //     zoom: 14,
+                            //   center: Thiscity1,
+                            // mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                            //};
+
+
+                            // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+                            var mapOptions = {
+                                zoom: 12,
+                                center: Thiscity,
+                                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                            };
+
+                            // This makes the div with id "map_canvas" a google map
+                            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                            var marker;
+
+
+
+
+                            var urll = "/AccomodationInfoes/GetCoordinates/" + nesto2;
+
+                            $.ajax({ url: urll, method: 'post' }).success(function (result) {
+
+                                var marker = new google.maps.Marker({
+                                    'position': new google.maps.LatLng(result.GoogleX, result.GoogleY),
+                                    'map': map,
+                                    'title': nesto
+                                });
+                                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+                                console.log("proslo");
+                              //  map.center.G.constructor(result.GoogleX);
+                               // map.center.K.constructor(result.GoogleY);
+
+
+
+                            });
+
+
+
+
+
+                        }).error(function (msg) { console.log("fail" + msg); });
+
+                    }
+
+                    change();
+
+
+                    // console.log(msg);
+
+
+                    // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+                    var mapOptions = {
+                        zoom: 14,
+                        center: Thiscity,
+                        mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                    };
+
+                    // This makes the div with id "map_canvas" a google map
+                    //  var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                    // This shows adding a simple pin "marker" - this happens to be the Tate Gallery in Liverpool!
+                    // var myLatlng = new google.maps.LatLng(53.40091, -2.994464);
+
+                    //        var marker = new google.maps.Marker({
+                    //          position: myLatlng,
+                    //        map: map,
+                    //      title: 'Tate Gallery'
+                    //});
+
+                    // You can make markers different colors...  google it up!
+                    // marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+
+                    // a sample list of JSON encoded data of places to visit in Liverpool, UK
+                    // you can either make up a JSON list server side, or call it from a controller using JSONResult
+                    //  var data = [
+                    //          { "Id": 1, "PlaceName": "Liverpool Museum", "OpeningHours":"9-5, M-F","GeoLong": "53.410146", "GeoLat": "-2.979919" },
+                    //        { "Id": 2, "PlaceName": "Merseyside Maritime Museum ", "OpeningHours": "9-1,2-5, M-F", "GeoLong": "53.401217", "GeoLat": "-2.993052" },
+                    //      { "Id": 3, "PlaceName": "Walker Art Gallery", "OpeningHours": "9-7, M-F", "GeoLong": "53.409839", "GeoLat": "-2.979447" },
+                    //    { "Id": 4, "PlaceName": "National Conservation Centre", "OpeningHours": "10-6, M-F", "GeoLong": "53.407511", "GeoLat": "-2.984683" }
+                    //];
+
+                    // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
+                    //  $.each(data, function (i, item) {
+                    //    var marker = new google.maps.Marker({
+                    //      'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
+                    //    'map': map,
+                    //  'title': item.PlaceName
+                    //});
+
+                    // Make the marker-pin blue!
+                    //   marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+
+                    // put in some information about each json object - in this case, the opening hours.
+                    // var infowindow = new google.maps.InfoWindow({
+                    //    content: "<div class='infoDiv'><h2>" + item.PlaceName + "</h2>" + "<div><h4>Opening hours: " + item.OpeningHours + "</h4></div></div>"
+                    //});
+
+                    function placeMarker(location) {
+
+
+                        var marker = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+                        marker.setPosition(location);
+                    }
+
+                    //google.maps.event.addListener(map, 'click', function(event) {
+                    //     placeMarker(event.latLng);
+                    //  });
+
+
+                    // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
+                    /*  google.maps.event.addListener(marker, 'click', function (event) {
+                          //      debugger;
+
+                          var latitude = event.latLng.lat();
+                          var longitude = event.latLng.lng();
+                          console.log( latitude + ', ' + longitude );
+
+                          radius = new google.maps.Circle({map: map,
+                              radius: 100,
+                              center: event.latLng,
+                              fillColor: '#777',
+                              fillOpacity: 0.1,
+                              strokeColor: '#AA0000',
+                              strokeOpacity: 0.8,
+                              strokeWeight: 2,
+                              draggable: true,    // Dragable
+                              editable: true      // Resizable
+                          });
+
+                          // Center of map
+                          map.panTo(new google.maps.LatLng(latitude,longitude));
+                          //     infowindow.open(map, marker);
+
+
+                      });*/
+
+                    //})
+                }
+
+            </script>
+        }

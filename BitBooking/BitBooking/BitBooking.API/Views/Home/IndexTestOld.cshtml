@@ -1,0 +1,91 @@
+﻿@*<div ng-app="booking">
+    <div class="col-md-12" ng-controller="accomodationController as ctrl">
+        <h2> Contacts: {{accomodationController.accomodationList.length}}</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Accomodation Name </th>
+                    <th> Description </th>
+                    <th> Number of Rooms </th>
+                    <th> Star Rating </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="accomodation in ctrl.accomodationList">
+                    <td>{{ accomodation.AccomodationName }}</td>
+                    <td>{{ accomodation.Description }}</td>
+                    <td>{{ accomodation.NumberOfRooms }}</td>
+                    <td>{{ accomodation.StarRating }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @*<acc-module-directive></acc-module-directive>*@
+    @*</div>
+    </div>*@
+
+<div class="destination" ng-app="booking">
+    <!-- container -->
+    <div class="container" id="topHotels" ng-controller="accomodationController as ctrl">
+
+        <!-- portfolio section -->
+        <section id="portfolio" class="col-lg-12">
+
+
+            <div class="destination-info">
+                <div class="sec-title text-center wow animated fadeInDown">
+                    <h3>Top Accomodations</h3>
+                    <p>Our Vision: BitBooking.com is an informative, user-friendly website – that guarantees the best available prices. Our goal is to provide business and leisure travelers with the most accessible and cost-effective way of discovering and booking the broadest selection of accommodations, in every corner of the world.</p>
+                </div>
+                <!--Begin of FOREACH LOOP for Acoomodation list on Index page-->
+
+                <div class=" col-lg-4" ng-repeat="accomodation in ctrl.accomodationList">
+                    <div class="project-wrapper wow animated fadeInUp ">
+                        <div class="portfolio-item">
+                            @*//Accomodation NAME*@
+                            <h3 class="accName">{{ accomodation.AccomodationName }}</h3>
+                            <a href='{{ accomodation.ListOfPhotos[0].PhotoUrl }}' class="img-responsive">
+
+                                @try
+                                {
+                                    <img src='{{ accomodation.ListOfPhotos[0].PhotoUrl }}' class="accImage" />
+                                }
+                                catch
+                                {
+                                    <img src="http://www.holidaycheck.com/assets/4.21.0/images/dummy-pictures/hotel_450x310.png" />
+
+                                }
+                            </a>
+
+                            <a href=''>
+                                <figcaption class="mask">
+
+                                    <p>
+                                        @*//Accomodation STAR RATING*@
+                                        Rating: {{ accomodation.StarRating }} stars
+                                        <br />
+                                        @*//Accomodation STAR RATING*@
+                                        Number of rooms: {{ accomodation.NumberOfRooms }}
+                                        <br />
+                                        @*//Accomodation address (COUNTRY)*@
+                                        Country: {{ accomodation.AccomodationInfo.Country }}
+                                        <br /><br />
+
+                                    </p>
+                                </figcaption>
+                            </a>
+                        </div>
+                        <div class="accDesc ">
+                            @*//Accomodation DESCRIPTION*@
+                            {{ accomodation.Description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="clearfix"> </div>
+    </div>
+
+</div>
+<!-- //container -->

@@ -1,0 +1,81 @@
+﻿@model BitBooking.DAL.Models.RoomPrice
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+<div class="container">
+    <div class="letters"><br />
+        <center>
+            <h8>Add Special Prices and Discounts</h8>
+            <p>Here As Seller you can set prices for each Type of Room in any period</p>
+        </center>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <form novalidate="novalidate" ng-submit="SRCtrl.SellerService.newSpecialPrice()" class="form-horizontal">
+                
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RoomTypeId, "Room Type:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div >
+                        @Html.DropDownList("RoomTypeId", null, htmlAttributes: new { @ng_model = "SRCtrl.SellerService.roomType", @required = "required", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RoomTypeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SpecialPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div >
+                        @Html.EditorFor(model => model.SpecialPrice, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.price", @required = "required", @class = "form-control", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.SpecialPrice, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" required>
+                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div >
+                        <input type="text" class="form-control" ng-model="SRCtrl.SellerService.dateFrom" data-max-date="{{SRCtrl.SellerService.dateTo}}" placeholder="From" bs-datepicker autoclose="true">
+                        @*@Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.dateFrom", @required = "required", @class = "form-control", @data_max_date = "{{SRCtrl.SellerService.dateTo}}", @bs_datepicker="" } })*@
+                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div >
+                        <input type="text" class="form-control" ng-model="SRCtrl.SellerService.dateTo" data-min-date="{{SRCtrl.SellerService.dateFrom}}" placeholder="To" bs-datepicker autoclose="true">
+
+                        @*@Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.dateTo", @required = "required", @class = "form-control", @data_max_date = "{{SRCtrl.SellerService.dateFrom}}" } })*@
+                        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <br />
+            <br />
+            <br />
+            <div class="alert alert-info" role="alert">Here as Seller You can define prices for each room type in certain date! Currency is in US dollars! All of the parameters are required</div>
+
+        </div>
+    </div>
+    
+    <hr /><br />
+    <div>
+        <center>
+            <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+        </center>
+    </div>
+
+</div>

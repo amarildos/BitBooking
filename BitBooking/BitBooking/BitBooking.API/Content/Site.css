@@ -1,0 +1,78 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+select {
+    max-width: 25%;
+}
+
+input.form-control {
+    max-width: 25%;
+}
+
+textarea#comm.form-control-comm {
+    width: 80%;
+   
+}
+
+textarea#commm.form-control-commm {
+    width: 100%;
+   
+}
+
+textarea.form-control-date {
+    max-width: 80%;
+}
+
+.centered {
+
+   position:absolute;
+   
+}
+.modal-content {
+
+background-color:#D7D7D7;
+}
+.btn-primary {
+
+     color: #fff;
+    background-color: #ADADAD;
+    border-color: #357ebd;
+}
+.guarantee
+{
+    height:400px;
+    
+
+}
+
+
+.dl-horizontal dt{
+
+ font-style:oblique;
+ font-family: 'BlackChancery';
+ font-size:20px;
+}
+.dl-horizontal dd{
+
+ font-style:italic;
+
+ font-size:15px;
+}
+.adressBar{
+     width:100%;
+
+}
+#adressAll{
+    height:300px;
+    padding-top:20px;
+
+}

@@ -1,0 +1,662 @@
+﻿@model BitBooking.DAL.Models.Accomodation
+
+@{
+    ViewBag.Title = "Details";
+}
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+@try
+{
+    <style>
+
+    .guarantee
+    {
+        background-image: url('@Model.ListOfPhotos.FirstOrDefault(x => x.AccomodationId == Model.AccomodationId && x.Priority == 2).PhotoUrl');
+        background-size: cover;
+        padding: 3em 0;
+    }
+
+
+
+    </style>
+}
+
+catch
+{
+    <style>
+        .guarantee {
+            background-image: url('http://www.holidaycheck.com/assets/4.21.0/images/dummy-pictures/hotel_450x310.png');
+            background-size:cover;
+            padding: 3em 0;
+        }
+    </style>
+}
+
+<div class="guarantee">
+    <!-- container -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <center><h4>@Model.AccomodationName</h4></center>
+        <div class="guarantee-grids">
+           
+        </div>
+    </div>
+    <!-- //container -->
+</div>
+
+
+        <!-- //container -->
+    <!--END of LIST OF ROOMS FOR ACCOMODATION--> <!--END of LIST OF ROOMS FOR ACCOMODATION-->
+
+<br />
+<br />
+<br />
+
+<!-- portfolio section -->
+<div class="row col-lg-12">
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+
+                <div class="sec-title text-center wow animated fadeInDown">
+                    <h2 class="myClasss">Our Room Types</h2>
+                    <p>Take a look at all of our room types and details for each type</p>
+                </div>
+
+
+                <div class="project-wrapper wow animated fadeInUp">
+                    @foreach (var room in Model.ListOfRooms)
+                    {
+                        <div class="col-md-4">
+                            <div class="portfolio-item">
+                                @try
+                                {
+                                    <img src="@room.Accomodation.ListOfPhotos.FirstOrDefault(x => x.AccomodationId == room.AccomodationId && x.RoomTypeId == room.RoomTypeId && x.Priority == 3).PhotoUrl" class="img-responsive" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat">
+                                }
+                                catch
+                                {
+                                    <img src="http://www.holidaycheck.com/assets/4.21.0/images/dummy-pictures/hotel_450x310.png" />
+                                }
+                                <figcaption class="mask">
+                                    <h3>@room.RoomType.RoomTypeName</h3>
+                                    <p class="roomDescription">
+                                        Room capacity: @room.RoomCapacity persons <br />
+                                        Room price: @Html.DisplayFor(x => room.Price) €
+                                    </p>
+                                </figcaption>
+                                <ul class="external">
+
+                                    <li><i class="link">@Html.ActionLink("Details", "Details", "Rooms", new { id = @room.RoomId }, new { @class = "showRoomDetails", roomNumber = @room.RoomId })</i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+<!-- end portfolio section -->
+
+<!-- Service section -->
+<div class="row">
+   
+    <section id="service">
+        <div class="container">
+         
+            <div class="col-md-12 text-center">
+              
+                <div class="sec-title text-center">
+                    <br />
+                    <br />
+                    <hr />
+                    <br />
+                    <br />
+                    <h2 class="myClasss">Accomodation Features</h2>
+                    <p><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></p>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-6 text-center wow animated zoomIn" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <p><span class="glyphicon glyphicon-home" style="font-size:40px" aria-hidden="true"></span></p>
+                        </div>
+                        <h3 class="myClass">Services:</h3>
+                        <p>
+                            @foreach (var service in Model.ListOfAccomodationServices)
+                            {
+
+                                <div class="col-md-4">
+                                    <div class="services-grid-info">
+                                        @*<h5><strong>@service.AccomodationServiceType.Name</strong></h5>*@
+                                        <h6>@service.Name</h6>
+                                    </div>
+                                </div>
+                            }
+
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-sm-6 col-xs-6 text-center wow animated zoomIn" data-wow-delay="0.6s">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <p><span class="glyphicon glyphicon-cutlery" style="font-size:40px" aria-hidden="true"></span></p>
+                        </div>
+                        <h3 class="myClass">Facilities:</h3>
+                        <p>
+                            @foreach (var facility in Model.ListOfAccomodationFacilities)
+                            {
+
+
+                                <div class="services-grid-info">
+                                    <div class="col-md-4">
+                                        <h6><strong>Facility Name:</strong></h6>
+                                        <h6>@facility.Name</h6>
+                                        @*<h5><strong>Description:</strong></h5>
+                                        <h6>@facility.Description</h6>*@
+                                        <h6><strong>Working Hours:</strong></h6>
+                                        <h6>@Html.DisplayFor(x => facility.StartHours) to @Html.DisplayFor(x => facility.EndHours)</h6>
+                                    </div>
+
+                                    @*<div class="col-md-4">
+                                                    <h5><strong>Description:</strong></h5>
+                                            <h6>@facility.Description</h6>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <h5><strong>Working Hours:</strong></h5>
+                                            <h6>@Html.DisplayFor(x => facility.StartHours) to @Html.DisplayFor(x => facility.EndHours)</h6>
+                                        </div>*@
+                                </div>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- end Service section -->
+
+<br />
+
+
+<!--"UserCommentId,Comment,ApplicationUserId,UserName,Rating,ReportCount,AccomodationId")] UserComment userComment)-->
+
+
+
+
+<div class="col-lg-12">
+    <br />
+    <hr />
+    <br />
+    <br />
+
+    <center><h3>Average Accomodation Rating</h3></center>
+
+    @try
+    {
+        <center>
+            <div class="col-lg-12">
+                <input id="averageRating" data-readonly="true" data-show-clear="false" data-show-caption="false" class="rating" name="Rating" value="@Convert.ToInt32(Model.ListUserComments.Where(x => x.AccomodationId == @Model.AccomodationId).Average(x => x.Rating))" data-min="0" data-max="5" data-step="0.1" data-stars=5 data-glyphicon="false">
+            </div>
+        </center>
+
+    }
+    catch
+    {<div class="col-lg-5">
+      
+    </div>}
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr />
+    <br />
+</div>
+<div class="container">
+    
+    <div class="col-lg-6">
+
+        <form action="/UserComments/Create" method="post" id="CreateCommentForm" class="thumbnail">
+
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <center><h3>Please rate our accomodation here</h3></center>
+                <hr />
+                <center>
+                    <input id="userRating" class="rating" name="Rating" data-min="0" data-max="5" data-step="1" data-stars=5
+                           data-glyphicon="false"> <label id="ratingError" style="color:#6B6B6B"> </label>
+                </center>
+            </div>
+            <input type="number" id="UserCommentId" name="UserCommentId" class="hidden" value="0" />
+
+            <p style="text-indent: 4em;">
+                <label style="float:left">Comment: </label>
+                <textarea class="form-control" type="text" cols="40" rows="5" id="Comment" name="Comment"></textarea>  <br />
+
+                <center><label id="commentError" style="color:#6B6B6B"> </label></center><br />
+                <input type="text" id="ApplicationUserId" name="ApplicationUserId" class="hidden" />
+
+                <input type="text" id="UserName" name="UserName" value="testUserName" class="hidden" />
+                <label id="userNameError" style="color:#6B6B6B"> </label><br />
+                <input type="number" id="ReportCount" name="ReportCount" class="hidden" value="0" />
+                <input type="number" id="AccomodationId" name="AccomodationId" class="hidden" value="@Model.AccomodationId" />
+                <hr />
+            </p>
+            
+
+          
+
+            <center><input id="submitButtonForm" type="submit" class="btn" value="Create comment" /></center>
+            
+            <center><label id="controllerError" style="color:#6B6B6B"></label></center>
+        </form>
+
+        <h1 id="nekiajdi"></h1>
+
+    </div>
+
+    <div class="col-lg-6">
+        <div id="allUserCommentsForAccomodation" style="overflow-y: scroll; height:490px;" class="thumbnail">
+
+            <br />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <input type="text" id="currentAccomodationId" class="hidden" name="name" value="@Model.AccomodationId " />
+        <input type="text" class="gugl hidden" value="@Model.AccomodationInfo.City" />
+        <input type="text" class="guglid hidden" value="@Model.AccomodationId" />
+        <div id="map_canvas" style="height:300px; margin-top:20px" class="col-lg-12">
+
+        </div>
+    </div>
+</div>
+
+
+
+@*Contact-info lightbox*@
+<div class="row">
+    <section class="dark-bg text-center section-padding contact-wrap" id="contact">
+        <a href="#top" class="up-btn"><i class="glyphicon glyphicon-home"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h1 class="arrow">Contact Us</h1>
+                </div>
+            </div>
+            <div class="row contact-details">
+                <div class="col-md-4">
+                    <div class="light-box box-hover">
+                        <h2><i class="glyphicon glyphicon-map-marker"></i><span>Address</span></h2>
+                        <p>@Html.DisplayFor(x => Model.AccomodationInfo.Address), @Html.DisplayFor(x => Model.AccomodationInfo.City), @Html.DisplayFor(x => Model.AccomodationInfo.Country)</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="light-box box-hover">
+                        <h2><i class="glyphicon glyphicon-phone-alt"></i><span>Phone</span></h2>
+                        <p>@Html.DisplayFor(x => Model.AccomodationInfo.Phone)</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="light-box box-hover">
+                        <h2><i class="glyphicon glyphicon-envelope"></i><span>Email</span></h2>
+                        <p>@Html.DisplayFor(x => Model.AccomodationInfo.Email)</p>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </section>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            
+            
+            /// START - Add UserId to Comment Form
+            $.ajax({
+                    method: "POST",
+                    url: "/api/values"
+                }).success(function (response) {
+                    console.log("SUCCESS USER ID RECEIVED!");
+                    //debugger;
+
+                    $("#ApplicationUserId").val(response);
+                }).error(function (response) {
+                    //debugger;
+
+                    console.log("USER ID NOT RECEIVED");
+                });
+
+             
+
+
+            /// END - Add UserId to Comment Form
+
+
+
+            ////////////// START - CREATE COMMENT AND SEND IT TO CONTORLLER
+            $("#CreateCommentForm").submit(function (event) {
+
+                //clear previously added validation Errors
+                $("#commentError").html("");
+                $("#ratingError").html("");
+                $("#userNameError").html("");
+
+
+                var value = $('#userRating').val();
+                event.preventDefault();
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                var data = {
+                    UserCommentId: $("#UserCommentId").val(),
+                    Comment: $("#Comment").val(),
+                    ApplicationUserId: $("#ApplicationUserId").val(),
+                    UserName: $("#UserName").val(),
+                    Rating: value,
+                    ReportCount: $("#ReportCount").val(),
+                    AccomodationId: $("#AccomodationId").val(),
+                    __RequestVerificationToken: token
+                }
+
+                if (data.Rating == 0 || data.Rating > 5) {
+                    $("#ratingError").html("Rating is required!");
+                    return;
+                }
+
+                if (data.Comment == "" || data.Comment == "(optional)") {
+                    $("#commentError").html("Comment is required.");
+                    return;
+                }
+
+                if (data.ApplicationUserId == "") {
+                    $("#controllerError").html("You are not able to comment.You are not registered user!");
+                    return;
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "/UserComments/Create",
+                    data: data
+                }).success(function (response) {
+                    console.log(response);
+                    $("#allUserCommentsForAccomodation").append(response);
+
+
+
+                }).error(function (response) {
+                    $("#controllerError").html(response.statusText);
+                    $("#submitButtonForm").attr("disabled", "disabled");
+                });
+            });
+
+            ////////////// END - CREATE COMMENT AND SEND IT TO CONTORLLER
+
+            /////////////// START - APPEND ALL COMMENTS TO ACCOMODATION DETAILS
+            var currentAccomodationId = $('#currentAccomodationId').val();
+
+            $.ajax({
+                method: "POST",
+                url: "/UserComments/GetComments/" + currentAccomodationId,
+            }).success(function (response) {
+                $("#allUserCommentsForAccomodation").append(response);
+
+            }).error(function (response) {
+                alert(response);
+            });
+            /////////////// END - APPEND ALL COMMENTS TO ACCOMODATION DETAILS
+
+
+            /////////////// START - OPEN MODAL FOR ROOM DETAILS
+            $('.showRoomDetails').click(function (event) {
+                event.preventDefault();
+
+                var roomNumber = $(this).attr("roomNumber");
+                console.log(roomNumber);
+
+                $.ajax({
+
+                    url: "/Rooms/Details/" + roomNumber
+                }).success(function (response) {
+                    bootbox.alert(response);
+                }).error(function (response) {
+
+                    bootbox.alert(response.responseText);
+                });
+            });
+
+            /////////////// END - OPEN MODAL FOR ROOM DETAILS
+
+            ////////////// START - GOOGLE MAPS
+            Initialize();
+
+            function Initialize() {
+                // Google has tweaked their interface somewhat - this tells the api to use that new UI
+                google.maps.visualRefresh = true;
+                var Thiscity = new google.maps.LatLng(53.408841, -2.981397);
+                var nesto = $('.gugl').val();
+                var nesto2 = $('.guglid').val();
+                var map;
+                console.log(nesto);
+                var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + nesto;
+                //   var url = "maps.googleapis.com/maps/api/geocode/json?address=+""+"&sensor=true_or_false";
+                function change() {
+                    var headerss = {};
+
+
+
+                    $.ajaxSetup({
+                        beforeSend: function (xhr) {
+
+                            var tokenKey = 'accessToken';
+                            var token = sessionStorage.getItem(tokenKey);
+                            
+
+                            //  debugger;
+                        }
+                    });
+
+                    $.ajax({
+                        url: url, crossDomain: true
+                        
+                    }).success(function (msg) {
+                        //console.log("proslo");
+
+                        console.log(msg.results[0].geometry.location.lat);
+                        console.log(msg.results[0].geometry.location.lng);
+                        console.log(Thiscity);
+                        Thiscity = new google.maps.LatLng(msg.results[0].geometry.location.lat, msg.results[0].geometry.location.lng);
+
+                        console.log(Thiscity);
+
+
+                       
+
+
+                        // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+                        var mapOptions = {
+                            zoom: 12,
+                            center: Thiscity,
+                            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        // This makes the div with id "map_canvas" a google map
+                        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                        var marker;
+
+
+
+
+
+
+                        var urll = "/AccomodationInfoes/GetCoordinates/" + nesto2;
+
+
+
+
+                        $.ajax({ url: urll, method: 'post' }).success(function (result) {
+
+                            var marker = new google.maps.Marker({
+                                'position': new google.maps.LatLng(result.GoogleX, result.GoogleY),
+                                'map': map,
+                                'title': nesto
+                            });
+                            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+                            //console.log("proslo");
+
+                        });
+                    }).error(function (msg) { console.log("fail" + msg); });
+                }
+                change();
+
+                var mapOptions = {
+                    zoom: 14,
+                    center: Thiscity,
+                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                };
+
+                
+
+
+                function placeMarker(location) {
+                    var marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+                    marker.setPosition(location);
+                }
+            }
+            ////////////// END - GOOGLE MAPS
+
+        });
+
+
+        ///////// BENJO VALIDATION START
+        //$(document).ready(function () {
+
+        //    var files;
+
+        //    // Add events
+        //    $('input[type=file]').on('change', prepareUpload);
+
+        //    function prepareUpload(event) {
+        //        files = event.target.files;
+        //    }
+
+
+        //    // for any form on this page do the follofing
+        //    $('form').submit(function (e, options) {
+
+
+
+        //        //if options is not defined define it as a empty object
+        //        var options = options || {};
+
+        //        //if allow is true let the event propagate to the server
+        //        if (options.allow == true) {
+        //            return;
+        //        }
+
+        //        //prevent submiting the form
+        //        e.preventDefault();
+
+        //        //clean all error messages
+        //        $("[data-error]").remove();
+
+        //        //get a refference to the current form
+        //        $form = $(this);
+
+        //        var data = new FormData($form[0]);
+        //        if (typeof files != 'undefined') {
+        //            $.each(files, function (key, value) {
+        //                data.append(key, value);
+        //            });
+        //        }
+
+        //        $form.each(function () {
+        //            var input = $(this); // This is the jquery object of the input, do what you will
+        //            data.append(input.attr("name"), input.val());
+        //        });
+
+
+        //        /*
+        //         * This will setup a AJAX call, the params are
+        //         * url: where to go
+        //         * method: what kind of request
+        //         * data: the data to add to the request
+        //         */
+        //        $.ajax({
+        //            url: $form.attr("action"),
+        //            method: $form.attr("method"),
+        //            data: data,
+        //            cache: false,
+        //            contentType: false,
+        //            processData: false
+        //        }).success(function (response) {
+        //            //if the validation did not return an error, triger the form submit with options.allow = true
+        //            $form.trigger("submit", { allow: true });
+
+        //        }).error(function (response) {
+        //            //if we got a bad request we take the JSON object from the response
+        //            var errors = response.responseJSON;
+
+        //            //get an array of all the keys in the error object
+        //            var keys = Object.keys(errors);
+
+        //            //itterate over the keys
+        //            for (var i = 0; i < keys.length; i++) {
+
+        //                //get the error messages for the current key (which represents one input field)
+        //                var errorMessages = errors[keys[i]];
+        //                //a string of all the errors for the current input
+        //                var allErrors = "";
+        //                for (var j = 0; j < errorMessages.length; j++) {
+        //                    allErrors += errorMessages[j];
+        //                }
+
+        //                $('input[name="' + keys[i] + '"]').parent().append('<span class="alert-danger" data-error >' + allErrors + '</span>')
+        //            }
+
+        //        });
+
+        //    });
+
+        //});
+
+        ///////// BENJO VALIDATION END
+
+
+
+
+    </script>
+}
+

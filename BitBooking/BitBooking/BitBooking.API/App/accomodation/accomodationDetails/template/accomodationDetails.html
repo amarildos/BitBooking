@@ -1,0 +1,451 @@
+﻿
+<!--NEW CAROUSEL START BENJO-->
+<!--HEADER NEW START-->
+
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                <header class="booking-item-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                           
+                            <div class="letters wow animated zoomIn animated">
+                                <h8>- {{accomodationDetailsCtrl.accomodation.AccomodationName}} -</h8>
+                            </div>
+                            <p class="lh1em text-small">
+                                <i class="fa fa-map-marker"></i>
+                                {{accomodationDetailsCtrl.accomodation.AccomodationInfo.Address}}, {{accomodationDetailsCtrl.accomodation.AccomodationInfo.City}},
+                                {{accomodationDetailsCtrl.accomodation.AccomodationInfo.PostalCode}}
+
+                            </p>
+                           <br />                            
+                        </div>
+                    </div>
+                </header>
+            </center>
+        </div>
+    </div>
+</div>
+<!--HEADER NEW END-->
+
+
+
+    <div class="hotelDetails1">
+        <br />
+    <div class="container hotelDetails">
+        <br />
+        <div class="row">
+            <div class="col-md-7">
+                <div class="tabbable booking-details-tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Accommodation Photo Gallery</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab-1">
+                            <div class="fotorama" data-allowfullscreen="true" data-nav="thumbs">
+
+                                <div class="col-md-12" ng-repeat="room in accomodationDetailsCtrl.accomodation.ListOfRooms">
+
+                                    <div ng-show="$index===0">
+
+                                    
+                                        <slick dots="true" autoplay="true" lazy-load='ondemand' autoplayspeed="200" infinite="true" speed=800 slides-to-show=3 touch-move="true" center-mode="true" center-padding="20%" variable-width="true" class="slider lazy">
+                                            <div ng-repeat="image in room.RoomType.ListOfPhotos">
+                                                <img class="img-responsive" style="margin: 0px 10px 0px 10px" src="{{image.PhotoUrl}}">
+                                            </div>
+                                        </slick>
+                                        <br />
+
+                                    </div>
+
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="booking-item-meta">
+                    <h3 class="lh1em mt40">
+                        Accommodation Rating Information
+                    </h3>
+               
+                    <div class="booking-item-rating">
+                    <ul class="icon-list icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.accomodation.StarRating == 5">
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+
+                        <ul class="icon-list icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.accomodation.StarRating == 4">
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+
+                        <ul class="icon-list icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.accomodation.StarRating == 3">
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+
+                        <ul class="icon-list icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.accomodation.StarRating == 2">
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+
+                        <ul class="icon-list icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.accomodation.StarRating == 1">
+                            <li>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <span class="booking-item-rating-number"><b>{{accomodationDetailsCtrl.accomodation.StarRating}}</b> Star {{accomodationDetailsCtrl.accomodation.AccomodationType.AccomodationTypeName}}</span>
+                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="lh1em">Traveler raiting</h4>
+                        <ul class="list booking-item-raiting-list">
+                            <li>
+                                <div class="booking-item-raiting-list-title">Exellent</div>
+                                <div class="booking-item-raiting-list-bar">
+                                    <div style="width:{{accomodationDetailsCtrl.service.rating5Precentage}}%;"></div>
+                                </div>
+                                <div class="booking-item-raiting-list-number">{{accomodationDetailsCtrl.service.rating5commentsCount}}</div>
+                            </li>
+                            <li>
+                                <div class="booking-item-raiting-list-title">Very Good</div>
+                                <div class="booking-item-raiting-list-bar">
+                                    <div style="width:{{accomodationDetailsCtrl.service.rating4Precentage}}%;"></div>
+                                </div>
+                                <div class="booking-item-raiting-list-number">{{accomodationDetailsCtrl.service.rating4commentsCount}}</div>
+                            </li>
+                            <li>
+                                <div class="booking-item-raiting-list-title">Average</div>
+                                <div class="booking-item-raiting-list-bar">
+                                    <div style="width:{{accomodationDetailsCtrl.service.rating3Precentage}}%;"></div>
+                                </div>
+                                <div class="booking-item-raiting-list-number">{{accomodationDetailsCtrl.service.rating3commentsCount}}</div>
+                            </li>
+                            <li>
+                                <div class="booking-item-raiting-list-title">Poor</div>
+                                <div class="booking-item-raiting-list-bar">
+                                    <div style="width:{{accomodationDetailsCtrl.service.rating2Precentage}}%;"></div>
+                                </div>
+                                <div class="booking-item-raiting-list-number">{{accomodationDetailsCtrl.service.rating2commentsCount}}</div>
+                            </li>
+                            <li>
+                                <div class="booking-item-raiting-list-title">Terrible</div>
+                                <div class="booking-item-raiting-list-bar">
+                                    <div style="width:{{accomodationDetailsCtrl.service.rating1Precentage}}%;"></div>
+                                </div>
+                                <div class="booking-item-raiting-list-number">{{accomodationDetailsCtrl.service.rating1commentsCount}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12" ng-show="accomodationDetailsCtrl.service.AverageUserCommentRating != 0">
+                        <h4 class="lh1em">Average Rating</h4>
+                        <ul class="list booking-item-raiting-summary-list">
+                            <li>
+                               
+                                <ul class="icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.service.AverageUserCommentRating >= 4 && accomodationDetailsCtrl.service.AverageUserCommentRating <= 5">
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                </ul>
+                                <ul class="icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.service.AverageUserCommentRating >= 3 && accomodationDetailsCtrl.service.AverageUserCommentRating < 4">
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                </ul>
+                                <ul class="icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.service.AverageUserCommentRating >= 2 && accomodationDetailsCtrl.service.AverageUserCommentRating < 3">
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                </ul>
+                                <ul class="icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.service.AverageUserCommentRating >= 1 && accomodationDetailsCtrl.service.AverageUserCommentRating < 2">
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                </ul>
+                                <ul class="icon-group booking-item-rating-stars" ng-show="accomodationDetailsCtrl.service.AverageUserCommentRating <= 1">
+                                    <li>
+                                        <i class="fa fa-smile-o"></i>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+               
+            </div>
+        </div><br />
+    </div><br />
+</div>
+<!--NEW CAROUSEL END BENJO-->
+
+<br />
+
+
+
+
+<div class="container">
+
+    <div class="col-md-12 wow animated fadeInUp" data-wow-delay="0.5s">
+        
+        <center>
+            
+            
+            <div class="lettersMainTwo sec-title wow animated fadeInDown">
+                <h8>- Our Room Types -</h8>
+            </div>
+            
+        </center>
+
+            <div class="col-md-9">
+                <ul class="booking-list">
+
+                    <li>
+                        <a href="" class="booking-item" ng-repeat="room in accomodationDetailsCtrl.accomodation.ListOfRooms">
+                            <div class="row">
+                                <div class="col-md-3">
+
+                                    <img src="/images/m1.png" alt="room cover photo" style="position:absolute;top:10px;left:30px; width:165px;height:133px;z-index:0" />
+
+                                    <div ng-repeat="image in room.RoomType.ListOfPhotos | filter: {Priority: 0} |limitTo:1">
+
+                                        <button href="" data-nq-modal="" class="btn btn-warning" data-qs-title="{{room.RoomType.RoomTypeName}}" data-qs-content='<center><img src="{{image.PhotoUrl}}" width="530" alt="alternate text" /></center>'>
+                                            <img src="{{image.PhotoUrl}}" width="165" alt=" alternate t alt=" alternate text" />
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <h5 class="booking-item-title">{{room.RoomType.RoomTypeName}}</h5>
+                                    <p class="text-small">{{room.RoomDetails}}</p>
+                                    <ul class="booking-item-features booking-item-features-sign clearfix">
+                                        <li rel="tooltip" data-placement="top" title="Adults Occupancy">
+                                            <i class="fa fa-male"></i><span class="booking-item-feature-sign">x {{room.RoomCapacity}}</span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="booking-item-price">${{room.Price | number:2}}</span><span>/night</span>
+                                </div>
+                            </div>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4><strong>About the {{accomodationDetailsCtrl.accomodation.AccomodationType.AccomodationTypeName}}</strong></h4>
+                <p class="mb30">{{accomodationDetailsCtrl.accomodation.Description}}</p>
+                <hr />
+                <h4><strong>{{accomodationDetailsCtrl.accomodation.AccomodationType.AccomodationTypeName}} Services</strong></h4>
+                <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                    <li ng-repeat="service in accomodationDetailsCtrl.accomodation.ListOfAccomodationServices">
+                        <i class="im im-lines"></i><span class="booking-item-feature-title">{{service.Name}}</span>
+                    </li>
+
+                </ul>
+                <hr />
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+   
+  
+    <br />
+    <br />
+<div class="hotelDetails1">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <center>
+                <div class="letters wow animated zoomIn animated">
+                    <h8>- {{accomodationDetailsCtrl.accomodation.AccomodationType.AccomodationTypeName}} Facilities -</h8><hr />
+                </div>
+            </center>
+            <br />
+            <div class="col-md-3" ng-repeat="facility in accomodationDetailsCtrl.accomodation.ListOfAccomodationFacilities">
+                <div class="thumb">
+                    <header class="thumb-header">
+                        <a class="hover-img curved btn btn-inverse" href="" data-qo-effect="sing" data-nq-modal="" data-qs-title="<center><strong>{{facility.Name}}</strong> <br /> Working hours: {{facility.StartHours | date:'HH:mm'}}h to {{facility.EndHours |date:'HH:mm' }}h</center>" data-qs-content='<center><img src="{{facility.PhotoUrl}}" width="500" alt="alternate text" /></center>'>
+                        <img src="/Images/defaultAccomodationPhoto.jpg" height="262" ng-show="facility.PhotoUrl == null" alt="Alternate Text" />
+                        <img src="{{facility.PhotoUrl}}" height="262" alt="Alternate T alt=" alternate text" ng-show="facility.PhotoUrl != null" />
+                        <i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                    </a>
+                    </header>
+                    <div class="thumb-caption">
+                        <center>
+                            <h4 class="thumb-title">{{facility.Name}}</h4>
+                        </center>
+                        <!--<p class="thumb-desc">Tellus cum ante sed mus vulputate scelerisque eu</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <br />
+
+
+</div>
+
+
+  
+    <!--COMMENTS START-->
+    <div class="ratImg">
+        <div class="container">
+            <div class="ratCom">
+                <br />
+                <div data-nq-tabset="" data-tabset-model="demoTabset">
+                    <div data-nq-tab="" data-heading="Rate and comment" style="height:405px">
+                        <div ui-view="accomodationComments"></div>
+                        <div ng-bind-html="tabParagraph"></div>
+                    </div>
+                    <div data-nq-tab="" data-heading="Previous comments" style="height:405px">
+                        <div ui-view="allAccomodationComments"></div>
+                        <div ng-bind-html="tabParagraph"></div>
+                    </div>
+                    <div data-nq-tab="" data-heading="Contact Us" style="height:405px">
+                        <div ui-view="accomodationContact"></div>
+                        <div ng-bind-html="tabParagraph"></div>
+                    </div>
+                </div>
+
+                <br />
+
+          
+            </div>
+        </div>
+    </div>
+    <!--COMMENTS END-->
+
+
+<div class="hotelDetails1">
+    <div class="mapContainer">
+        <div ng-if="accomodationDetailsCtrl.accomodation.AccomodationInfo.GoogleX" map-lazy-load="http://maps.google.com/maps/api/js">
+
+            <map name="map" zoom="8" center="{{accomodationDetailsCtrl.accomodation.AccomodationInfo.GoogleX}},{{accomodationDetailsCtrl.accomodation.AccomodationInfo.GoogleY}}" scrollwheel="false" disable-default-u-i="true">
+                <marker position="{{accomodationDetailsCtrl.accomodation.AccomodationInfo.GoogleX}},{{accomodationDetailsCtrl.accomodation.AccomodationInfo.GoogleY}}" title="Click to zoom">
+                </marker>
+            </map>
+
+        </div>
+    </div>
+    <section class="dark-bg text-center section-padding" id="contact">
+       
+        <div class="container">
+
+            <div class="row contact-details sec-title text-center white wow animated fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                <div class="col-md-4">
+                    <div class="wow animated zoomIn animated" style="visibility: visible; animation-name: zoomIn;">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                        <h3>Address</h3>
+                        <div class="lettersMainTwo">
+                            <h4>{{accomodationDetailsCtrl.accomodation.AccomodationInfo.Address}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wow animated zoomIn animated" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: zoomIn;">
+                        <i class="glyphicon glyphicon-phone-alt"></i>
+                        <h3>Phone</h3>
+                        <div class="lettersMainTwo">
+                            <h4>{{accomodationDetailsCtrl.accomodation.AccomodationInfo.Phone}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wow animated zoomIn animated" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: zoomIn;">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <h3>Email</h3>
+                        <div class="lettersMainTwo">
+                            <h4>{{accomodationDetailsCtrl.accomodation.AccomodationInfo.Email}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+ 

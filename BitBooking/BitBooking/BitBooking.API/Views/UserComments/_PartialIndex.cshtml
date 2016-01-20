@@ -1,0 +1,61 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.UserComment>
+
+@{
+    Layout = null;
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccomodationId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccomodationId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserCommentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserCommentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserCommentId })
+        </td>
+    </tr>
+}
+
+</table>

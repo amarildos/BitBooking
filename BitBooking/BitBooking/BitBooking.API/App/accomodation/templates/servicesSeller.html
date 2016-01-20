@@ -1,0 +1,43 @@
+﻿<div class="container">
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            <h8>- Manage Your Accommodation Services -</h8>
+        </center>
+    </div><hr /><br />
+    
+    <table dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs" class="row-border hover table" datatable="ng" >
+
+        <thead>
+            <tr class="info">
+                <th style="font-size:16px">Service Name</th>
+                <th style="font-size:16px">Service Type</th>
+                <th style="font-size:16px">Options</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="list in SRCtrl.SellerService.sellerServices | orderBy: 'Name'">
+                <th style="font-size:14px">{{list.Name}}</th>
+                <th style="font-size:14px">{{list.AccomodationServiceType.Name}}</th>
+                <th class="col-md-2" style="font-size:14px">
+                    <!--<button type="button" class="btn btn-danger" ng-really-message="Are you sure?"
+                            ng-really-click="SRCtrl.SellerService.deleteService($index)">
+                        DELETE
+                    </button>-->
+
+                    <button type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" style="width:100%" data-after-confirm="SRCtrl.SellerService.deleteService($index)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                          <p>
+                           Are you sure you want to delete ?</p>">
+                        <i class="fa fa-times"></i>
+                      DELETE
+                    </button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <hr /><br />
+    <center>
+        <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+    </center>
+    </div>

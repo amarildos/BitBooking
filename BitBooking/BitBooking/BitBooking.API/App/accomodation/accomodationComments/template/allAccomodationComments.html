@@ -1,0 +1,68 @@
+﻿<div class="col-md-12" ng-show="accomodationCommentsCtrl.accomodationService.AllAccomorationComments.length == 0">
+    <div class="letters">
+        <center><h8>There are no comments for this accommodation</h8>
+        <p>Please leave us your comment!</p></center>
+        </div>
+    </div>
+<div ng-show="accomodationCommentsCtrl.accomodationService.AllAccomorationComments.length > 0">
+    <div class="col-md-12" style="overflow-y:scroll; overflow-x: hidden;height:400px;">
+        <div class="letters">
+            <center><h8>User Comments</h8></center>
+            <center><h4>Average User Rating: {{accomodationCommentsCtrl.accomodationService.AverageUserCommentRating | number:2}} out of 5.00</h4></center>
+            </div>
+            <div ng-repeat="comment in accomodationCommentsCtrl.accomodationService.AllAccomorationComments">
+                <!--STARS SECTION-->
+                <div>
+                    <div class="alert">
+                        <center>
+                            <div class="stars">
+                                <div star-rating rating="comment.Rating" read-only="true"></div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+
+                <!--COMMENTS SECTION-->
+
+                <!--<form class="form-horizontal" role="form">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <center>
+                                    <div class="col-md-10">
+                                        <textarea id="commm" readonly class="form-control-commm" rows="4">{{comment.Comment}}</textarea>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-default btn-sm" ng-click="accomodationCommentsCtrl.accomodationService.ReportComment($index)">Report</button>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                </form>-->
+                        <div class="box-grids">
+                            <div class="col-md-12 client wow fadeInLeft" data-wow-delay="0.5s">
+                                <div class="box-grid">
+                                    <span></span>
+                                    <p>
+                                        {{comment.Comment}}
+                                    </p>
+                                    <label></label>
+                                </div>
+                                <br />
+                                <button class="btn btn-danger" ng-click="accomodationCommentsCtrl.accomodationService.ReportComment($index)">REPORT</button>
+                              
+                            </div>
+
+
+                            <div class="clearfix"></div>
+                            <br />
+                        </div>
+                    <!--</div>
+                </div>-->
+            </div>
+        </div>
+
+</div>

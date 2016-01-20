@@ -1,0 +1,189 @@
+﻿
+
+
+<div class="container">
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            
+            
+            <h8>  - {{SRCtrl.SellerService.info.AccomodationName}} Administration panel  -</h8>
+            <br />
+            <div class="booking-item-rating">
+                <ul class="icon-list icon-group booking-item-rating-stars" style="margin-bottom:30px" ng-show="SRCtrl.SellerService.info.StarRating == 5">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+
+                <ul class="icon-list icon-group booking-item-rating-stars" style="margin-bottom:30px"  ng-show="SRCtrl.SellerService.info.StarRating == 4">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+
+                <ul class="icon-list icon-group booking-item-rating-stars"  style="margin-bottom:30px" ng-show="SRCtrl.SellerService.info.StarRating == 3">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+
+                <ul class="icon-list icon-group booking-item-rating-stars" style="margin-bottom:30px" ng-show="SRCtrl.SellerService.info.StarRating == 2">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+
+                <ul class="icon-list icon-group booking-item-rating-stars" style="margin-bottom:30px"  ng-show="SRCtrl.SellerService.info.StarRating == 1">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+                <!--<p>
+            <a class="text-default" href="#">based on 1535 reviews</a>
+        </p>-->
+            </div>
+           
+            
+
+         
+            <p>Here you can manage your hotel profile</p>
+        </center>
+    </div>
+    <hr />
+    <br />
+    <div class="row">
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m1.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center><h3>Rooms</h3></center>
+                    <p>Here you Can Manage Your Rooms in The Hotel. Also you Can Add New Ones</p><hr />
+                    <center><p><a ng-click="SRCtrl.SellerService.getRooms()" class="btn btn-default" role="button"><i class="fa fa-eye"></i>View</a> <a ui-sref="newRoom" class="btn btn-default" role="button"><i class="fa fa-plus-square-o"></i>Add new</a></p></center>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m2.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center>
+                        <h3>Reservations</h3>
+                    </center>
+                    <p>Here you can manage reservations and make new ones"</p><hr />
+                    <center><p><a ng-click="SRCtrl.SellerService.getReservations()" class="btn btn-default" style="width:30%" role="button"><i class="fa fa-eye"></i>View</a></p></center>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m3.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center>
+                        <h3>Special Price</h3>
+                    </center>
+                    <p>Here you can change and make new Special promotions and prices"</p><hr />
+                    <center><p><a ng-click="SRCtrl.SellerService.getPrices()" class=" btn btn-default" role="button"><i class="fa fa-eye"></i>View</a> <a ui-sref="sellerPriceNew" class="btn btn-default" role="button"><i class="fa fa-plus-square-o"></i>Add new</a></p></center>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m4.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center>
+                        <h3>Services</h3>
+                    </center>
+                    <p>Administrate Your Services Add New Ones And Delete old ones! Or Just See them</p><hr />
+                    <center><p><a ng-click="SRCtrl.SellerService.getServices()" class="btn btn-default" role="button"><i class="fa fa-eye"></i>View</a> <a ui-sref="sellerServicesNew" class="btn btn-default" role="button"><i class="fa fa-plus-square-o"></i>Add new</a></p></center>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m5.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center>
+                        <h3>Facilities</h3>
+                    </center>
+                    <p>Administrate Your Facilities. Add new One Or Edit ones that exist already!</p><hr />
+                    <center><p><a ng-click="SRCtrl.SellerService.getFacilities()" class="btn btn-default" role="button"><i class="fa fa-eye"></i>View</a> <a ui-sref="sellerFacilitiesNew" class="btn btn-default" role="button"><i class="fa fa-plus-square-o"></i>Add new</a></p></center>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m6.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center>
+                        <h3>Accomodation Info</h3>
+                    </center>
+                    <p>Manage your Accomodation Information in case of change!</p><hr />
+                    <center>
+                        <p>
+                            <a ng-click="SRCtrl.SellerService.getInfo()" class="btn btn-default" role="button"><i class="fa fa-eye"></i>View</a>
+                            <a ng-click="SRCtrl.SellerService.getInfoEditData()" class="btn btn-default" role="button"><i class="fa fa-pencil-square-o"></i>Edit</a>
+                        </p>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/Images/m7.png" style="width:150px; height:150px" alt="...">
+                <div class="caption">
+                    <center>
+                        <h3>Accommodation Photos</h3>
+                    </center>
+                    <p>Manage your Accomodation photos, main photo, room type photos and facilities photo!</p><hr />
+                    <center>
+                        <p>
+                            <a ng-click="SRCtrl.SellerService.showPhotoPage()" class="btn btn-default" role="button"><i class="fa fa-upload"></i>Upload Photos</a>
+                        </p>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

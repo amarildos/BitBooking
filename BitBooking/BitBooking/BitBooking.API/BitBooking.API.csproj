@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D8895E0-E6C9-4DB5-AD3A-AE3AF0E44F71}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BitBooking.API</RootNamespace>
+    <AssemblyName>BitBooking.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CloudinaryDotNet">
+      <HintPath>..\packages\CloudinaryDotNet.1.0.22\lib\net40\CloudinaryDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal">
+      <HintPath>..\packages\PayPal.1.6.0\lib\net45\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.1.2\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccomodationFacilitiesController.cs" />
+    <Compile Include="Controllers\AccomodationInfoesController.cs" />
+    <Compile Include="Controllers\AccomodationsController.cs" />
+    <Compile Include="Controllers\AccomodationServicesController.cs" />
+    <Compile Include="Controllers\AccomodationServiceTypesController.cs" />
+    <Compile Include="Controllers\AccomodationsTestController.cs" />
+    <Compile Include="Controllers\AccomodationSuggestionController.cs" />
+    <Compile Include="Controllers\AccomodationTypesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\PaypalController.cs" />
+    <Compile Include="Controllers\PhotosApiController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\RoomAvailabilitiesController.cs" />
+    <Compile Include="Controllers\RoomPricesController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="Controllers\RoomTypesController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UploadPhotosController.cs" />
+    <Compile Include="Controllers\UploadPhotosFacilityController.cs" />
+    <Compile Include="Controllers\UserCommentsAPIController.cs" />
+    <Compile Include="Controllers\UserCommentsController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\accomodation\accomodation.factory.js" />
+    <Content Include="App\accomodation\accomodation.module.js" />
+    <Content Include="App\accomodation\accomodation.service.js" />
+    <Content Include="App\accomodation\accomodationComments\controller\accomodationComments.controller.js" />
+    <Content Include="App\accomodation\accomodationComments\template\accomodationComments.html" />
+    <Content Include="App\accomodation\accomodationComments\template\accomodationContact.html" />
+    <Content Include="App\accomodation\accomodationComments\template\allAccomodationComments.html" />
+    <Content Include="App\accomodation\accomodationDetails\controller\accomodationDetails.controller.js" />
+    <Content Include="App\accomodation\accomodationDetails\template\accomodationDetails.html" />
+    <Content Include="App\accomodation\accomodationList\controller\accomodationList.controller.js" />
+    <Content Include="App\accomodation\accomodationList\directive\accomodationList.directive.js" />
+    <Content Include="App\accomodation\accomodationList\template\accomodationList.html" />
+    <Content Include="App\accomodation\accomodationPhotos\accomodationPhotosController.js" />
+    <Content Include="App\accomodation\accomodationPhotos\photosFacilities.html" />
+    <Content Include="App\accomodation\templates\about.html" />
+    <Content Include="App\accomodation\templates\inbox.html" />
+    <Content Include="App\accomodation\templates\infoSeller.html" />
+    <Content Include="App\accomodation\templates\login.html" />
+    <Content Include="App\accomodation\templates\manager.html" />
+    <Content Include="App\accomodation\templates\paymentCanceled.html" />
+    <Content Include="App\accomodation\templates\paymentConfirmation.html" />
+    <Content Include="App\accomodation\accomodationPhotos\photos.html" />
+    <Content Include="App\accomodation\templates\priceSeller.html" />
+    <Content Include="App\accomodation\templates\profile.html" />
+    <Content Include="App\accomodation\templates\profileComments.html" />
+    <Content Include="App\accomodation\templates\profileEdit.html" />
+    <Content Include="App\accomodation\templates\profileReservation.html" />
+    <Content Include="App\accomodation\templates\register.html" />
+    <Content Include="App\accomodation\templates\registerSeller.html" />
+    <Content Include="App\accomodation\templates\reservationsSeller.html" />
+    <Content Include="App\accomodation\templates\rooms.html" />
+    <Content Include="App\accomodation\templates\searchResults.html" />
+    <Content Include="App\accomodation\templates\searchResultsConfirmation.html" />
+    <Content Include="App\accomodation\templates\sellerFacilities.html" />
+    <Content Include="App\accomodation\templates\sellerInfoEdit.html" />
+    <Content Include="App\accomodation\templates\servicesSeller.html" />
+    <Content Include="App\app.js" />
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\ajax-loader.gif" />
+    <Content Include="Content\angular-carousel.css" />
+    <Content Include="Content\AngularCss\angular-growl.css" />
+    <Content Include="Content\AngularCss\dateRange.css" />
+    <Content Include="Content\fonts\icomoon\icomoon.svg" />
+    <Content Include="Content\slick-theme.css" />
+    <Content Include="Content\slick.css" />
+    <Content Include="Content\Travolio\styleTravolio.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\icomoon\icomoon.svg" />
+    <Content Include="Images\ap.jpg" />
+    <Content Include="Images\app.jpg" />
+    <Content Include="Images\appp.jpg" />
+    <Content Include="Images\avion.jpg" />
+    <Content Include="Images\avion2.jpg" />
+    <Content Include="Images\Award_medal_seal_best-256.png" />
+    <Content Include="Images\Award_seal_hand_best-256.png" />
+    <Content Include="Images\back.jpg" />
+    <Content Include="Images\bbh.png" />
+    <Content Include="Images\bla.jpg" />
+    <Content Include="Images\brh.png" />
+    <Content Include="Images\cheap_logo.png" />
+    <Content Include="Images\commentImage.png" />
+    <Content Include="Images\comrat.jpg" />
+    <Content Include="Images\comrat2.jpg" />
+    <Content Include="Images\contact_us_image.jpg" />
+    <Content Include="Images\ddd.jpg" />
+    <Content Include="Images\defaultAccomodationPhotoSmall.jpg" />
+    <Content Include="Images\ggg.jpg" />
+    <Content Include="Images\keyboard.jpg" />
+    <Content Include="Images\keyboard.png" />
+    <Content Include="Images\letsgo.jpg" />
+    <Content Include="Images\lph.png" />
+    <Content Include="Images\m.png" />
+    <Content Include="Images\m1.png" />
+    <Content Include="Images\m2.png" />
+    <Content Include="Images\m3.png" />
+    <Content Include="Images\m4.png" />
+    <Content Include="Images\m5.png" />
+    <Content Include="Images\m6.png" />
+    <Content Include="Images\m7.png" />
+    <Content Include="Images\person-icon.png" />
+    <Content Include="Images\Picture1.png" />
+    <Content Include="Images\roomCover.png" />
+    <Content Include="Images\scrollbar\arrow-down.png" />
+    <Content Include="Images\scrollbar\arrow-left.png" />
+    <Content Include="Images\scrollbar\arrow-right.png" />
+    <Content Include="Images\scrollbar\arrow-up.png" />
+    <Content Include="Images\ThemeTravelo\arrow.png" />
+    <Content Include="Images\ThemeTravelo\box.png" />
+    <Content Include="Images\ThemeTravelo\cal.png" />
+    <Content Include="Images\ThemeTravelo\dwn.png" />
+    <Content Include="Images\ThemeTravelo\feature.png" />
+    <Content Include="Images\ThemeTravelo\icon.png" />
+    <Content Include="Images\ThemeTravelo\line.png" />
+    <Content Include="Images\ThemeTravelo\logo2.png" />
+    <Content Include="Images\ThemeTravelo\nav-icon.png" />
+    <Content Include="Images\ThemeTravelo\play.png" />
+    <Content Include="Images\ThemeTravelo\to-top1.png" />
+    <Content Include="Images\ThemeTravelo\v1.png" />
+    <Content Include="Images\ThemeTravelo\v2.png" />
+    <Content Include="Images\ThemeTravelo\v3.png" />
+    <Content Include="Images\Untitled-2.png" />
+    <Content Include="Images\wood.jpg" />
+    <Content Include="Scripts\angular-carousel.js" />
+    <Content Include="Scripts\angular-datatables.js" />
+    <Content Include="Scripts\angular-google-maps.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-slick.js" />
+    <Content Include="Scripts\angular-strap.js" />
+    <Content Include="Scripts\angular-strap.min.js" />
+    <Content Include="Scripts\angular-strap.tpl.js" />
+    <Content Include="Scripts\angular-strap.tpl.min.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular.country-select.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularQuantumi\angular-sanitize.js" />
+    <Content Include="Scripts\AngularQuantumi\effect-light.min.css" />
+    <Content Include="Scripts\AngularQuantumi\quantumui-all.js" />
+    <Content Include="Scripts\AngularQuantumi\quantumui.min.css" />
+    <Content Include="Scripts\Angular\angular-animate.min.js" />
+    <Content Include="Scripts\Angular\angular-cookies.js" />
+    <Content Include="Scripts\Angular\angular-file-upload.js" />
+    <Content Include="Scripts\Angular\angular-growl.min.js" />
+    <Content Include="Scripts\Angular\angular-resource.min.js" />
+    <Content Include="Scripts\Angular\angular-route.js" />
+    <Content Include="Scripts\Angular\angular-ui-router.min.js" />
+    <Content Include="Scripts\Angular\angular.min.js" />
+    <Content Include="Content\accDetailsRoomtypes\animate.css" />
+    <Content Include="Content\accDetailsRoomtypes\bootstrap-theme.css" />
+    <Content Include="Content\accDetailsRoomtypes\bootstrap-theme.min.css" />
+    <Content Include="Content\accDetailsRoomtypes\bootstrap.css" />
+    <Content Include="Content\accDetailsRoomtypes\bootstrap.min.css" />
+    <Content Include="Content\accDetailsRoomtypes\flexslider.css" />
+    <Content Include="Content\accDetailsRoomtypes\queries.css" />
+    <Content Include="Content\accDetailsRoomtypes\styles.css" />
+    <Content Include="Content\accDetails\animate.css" />
+    <Content Include="Content\accDetails\bootstrap.min.css" />
+    <Content Include="Content\accDetails\font-awesome.min.css" />
+    <Content Include="Content\accDetails\jquery.fancybox.css" />
+    <Content Include="Content\accDetails\jquery.fs.boxer.min.css" />
+    <Content Include="Content\accDetails\lightview.css" />
+    <Content Include="Content\accDetails\main.css" />
+    <Content Include="Content\accDetails\owl.carousel.css" />
+    <Content Include="Content\accDetails\slit-slider.css" />
+    <Content Include="Content\accDetails\superslides.css" />
+    <Content Include="Content\accIndex\animate.css" />
+    <Content Include="Content\accIndex\font-awesome.min.css" />
+    <Content Include="Content\accIndex\jquery.fancybox.css" />
+    <Content Include="Content\accIndex\jquery.fs.boxer.min.css" />
+    <Content Include="Content\accIndex\lightview.css" />
+    <Content Include="Content\accIndex\main.css" />
+    <Content Include="Content\accIndex\owl.carousel.css" />
+    <Content Include="Content\accIndex\slit-slider.css" />
+    <Content Include="Content\accIndex\superslides.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\NewStyle\bootstrap.css" />
+    <Content Include="Content\NewStyle\pop-box.css" />
+    <Content Include="Content\NewStyle\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\10.JPG" />
+    <Content Include="Images\11.jpg" />
+    <Content Include="Images\12.jpg" />
+    <Content Include="Images\13.jpg" />
+    <Content Include="Images\2.png" />
+    <Content Include="Images\3.png" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7.jpg" />
+    <Content Include="Images\8.jpg" />
+    <Content Include="Images\9.jpg" />
+    <Content Include="Images\a.jpg" />
+    <Content Include="Images\aa.jpg" />
+    <Content Include="Images\d.jpg" />
+    <Content Include="Images\defaultAccomodationPhoto.jpg" />
+    <Content Include="Images\e.jpg" />
+    <Content Include="Images\h.jpg" />
+    <Content Include="Images\Photos\h.jpg" />
+    <Content Include="Images\social.png" />
+    <Content Include="Images\t1.jpg" />
+    <Content Include="Images\t2.jpg" />
+    <Content Include="Images\t3.jpg" />
+    <Content Include="Images\t4.jpg" />
+    <Content Include="Scripts\AccDetailsRoomtheme\bootstrap.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\bootstrap.min.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\jquery.flexslider.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\jquery.smooth-scroll.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\modernizr.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\overlay.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\scripts-ck.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\scripts.js" />
+    <Content Include="Scripts\AccDetailsRoomtheme\waypoints.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\bootstrap.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery.ba-cond.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery.easing.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery.parallax-1.1.3.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery.singlePageNav.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\jquery.slitslider.js" />
+    <Content Include="Scripts\AccDetailsThemes\main.js" />
+    <Content Include="Scripts\AccDetailsThemes\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\owl.carousel.min.js" />
+    <Content Include="Scripts\AccDetailsThemes\wow.min.js" />
+    <Content Include="Scripts\Angular\dateParserDateRange.js" />
+    <Content Include="Scripts\Angular\dimensionsDateRange.js" />
+    <Content Include="Scripts\Angular\jcs-auto-validate.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\fonts\Dorsa-Regular.ttf" />
+    <Content Include="Content\fonts\OpenSans-Regular.ttf" />
+    <Content Include="Content\fonts\BlackChancery.TTF" />
+    <Content Include="Content\accDetailsRoomtypes\bootstrap-theme.css.map" />
+    <Content Include="Content\accDetailsRoomtypes\bootstrap.css.map" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-strap.min.js.map" />
+    <Content Include="Content\angular-carousel.scss" />
+    <Content Include="Content\fonts\slick.ttf" />
+    <Content Include="Content\fonts\slick.woff" />
+    <Content Include="Content\fonts\icomoon\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon\icomoon.woff" />
+    <Content Include="fonts\BlackChancery.TTF" />
+    <Content Include="fonts\Dorsa-Regular.ttf" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\icomoon\icomoon.eot" />
+    <Content Include="fonts\icomoon\icomoon.ttf" />
+    <Content Include="fonts\icomoon\icomoon.woff" />
+    <Content Include="fonts\OpenSans-Regular.ttf" />
+    <Content Include="fonts\slick.ttf" />
+    <Content Include="fonts\slick.woff" />
+    <None Include="Properties\PublishProfiles\bitbooking - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\bitbooking - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\NewThemes\jquery.ba-cond.min.js" />
+    <Content Include="Scripts\NewThemes\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\NewThemes\jquery.parallax-1.1.3.js" />
+    <Content Include="Scripts\NewThemes\jquery.singlePageNav.min.js" />
+    <Content Include="Scripts\NewThemes\jquery.slitslider.js" />
+    <Content Include="Scripts\NewThemes\main.js" />
+    <Content Include="Scripts\NewThemes\owl.carousel.min.js" />
+    <Content Include="Scripts\NewThemes\wow.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\slick.min.js" />
+    <Content Include="Scripts\Themes\easing.js" />
+    <Content Include="Scripts\Themes\jquery.magnific-popup.js" />
+    <Content Include="Scripts\Themes\modernizr.custom.min.js" />
+    <Content Include="Scripts\Themes\move-top.js" />
+    <Content Include="Scripts\Themes\NewScript.js" />
+    <Content Include="Scripts\Themes\responsiveslides.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\AccomodationFacilities\Create.cshtml" />
+    <Content Include="Views\AccomodationFacilities\Delete.cshtml" />
+    <Content Include="Views\AccomodationFacilities\Details.cshtml" />
+    <Content Include="Views\AccomodationFacilities\Edit.cshtml" />
+    <Content Include="Views\AccomodationFacilities\Index.cshtml" />
+    <Content Include="Views\AccomodationInfoes\Create.cshtml" />
+    <Content Include="Views\AccomodationInfoes\Delete.cshtml" />
+    <Content Include="Views\AccomodationInfoes\Details.cshtml" />
+    <Content Include="Views\AccomodationInfoes\Edit.cshtml" />
+    <Content Include="Views\AccomodationInfoes\Index.cshtml" />
+    <Content Include="Views\AccomodationServices\Create.cshtml" />
+    <Content Include="Views\AccomodationServices\Delete.cshtml" />
+    <Content Include="Views\AccomodationServices\Details.cshtml" />
+    <Content Include="Views\AccomodationServices\Edit.cshtml" />
+    <Content Include="Views\AccomodationServices\Index.cshtml" />
+    <Content Include="Views\AccomodationServiceTypes\Create.cshtml" />
+    <Content Include="Views\AccomodationServiceTypes\Delete.cshtml" />
+    <Content Include="Views\AccomodationServiceTypes\Details.cshtml" />
+    <Content Include="Views\AccomodationServiceTypes\Edit.cshtml" />
+    <Content Include="Views\AccomodationServiceTypes\Index.cshtml" />
+    <Content Include="Views\AccomodationTypes\Create.cshtml" />
+    <Content Include="Views\AccomodationTypes\Delete.cshtml" />
+    <Content Include="Views\AccomodationTypes\Details.cshtml" />
+    <Content Include="Views\AccomodationTypes\Edit.cshtml" />
+    <Content Include="Views\AccomodationTypes\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\RoomPrices\Create.cshtml" />
+    <Content Include="Views\RoomPrices\Delete.cshtml" />
+    <Content Include="Views\RoomPrices\Details.cshtml" />
+    <Content Include="Views\RoomPrices\Edit.cshtml" />
+    <Content Include="Views\RoomPrices\Index.cshtml" />
+    <Content Include="Views\Photos\Create.cshtml" />
+    <Content Include="Views\Photos\Delete.cshtml" />
+    <Content Include="Views\Photos\Details.cshtml" />
+    <Content Include="Views\Photos\Edit.cshtml" />
+    <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\RoomTypes\Create.cshtml" />
+    <Content Include="Views\RoomTypes\Delete.cshtml" />
+    <Content Include="Views\RoomTypes\Details.cshtml" />
+    <Content Include="Views\RoomTypes\Edit.cshtml" />
+    <Content Include="Views\RoomTypes\Index.cshtml" />
+    <Content Include="Views\Accomodations\Create.cshtml" />
+    <Content Include="Views\Accomodations\Delete.cshtml" />
+    <Content Include="Views\Accomodations\Details.cshtml" />
+    <Content Include="Views\Accomodations\Edit.cshtml" />
+    <Content Include="Views\Accomodations\Index.cshtml" />
+    <Content Include="Views\RoomAvailabilities\Create.cshtml" />
+    <Content Include="Views\RoomAvailabilities\Delete.cshtml" />
+    <Content Include="Views\RoomAvailabilities\Details.cshtml" />
+    <Content Include="Views\RoomAvailabilities\Edit.cshtml" />
+    <Content Include="Views\RoomAvailabilities\Index.cshtml" />
+    <Content Include="Views\Accomodations\ShowAvailableRooms.cshtml" />
+    <Content Include="Views\RoomAvailabilities\ReserveRoom.cshtml" />
+    <Content Include="Views\Accomodations\NoRoomsFound.cshtml" />
+    <Content Include="Views\Accomodations\NoHotelsFound.cshtml" />
+    <Content Include="Views\UserComments\Create.cshtml" />
+    <Content Include="Views\UserComments\Delete.cshtml" />
+    <Content Include="Views\UserComments\Details.cshtml" />
+    <Content Include="Views\UserComments\Edit.cshtml" />
+    <Content Include="Views\UserComments\Index.cshtml" />
+    <Content Include="Views\UserComments\_PartialCreate.cshtml" />
+    <Content Include="Views\UserComments\_PartialIndex.cshtml" />
+    <Content Include="Views\UserComments\GetComments.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\RoomAvailabilities\UserReservations.cshtml" />
+    <Content Include="Views\Home\ProfilePage.cshtml" />
+    <Content Include="Views\Home\IndexTestOld.cshtml" />
+    <Content Include="Views\Home\IndexTest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitBooking.DAL\BitBooking.DAL.csproj">
+      <Project>{e72f1741-9b24-4f11-9f34-a0c202881633}</Project>
+      <Name>BitBooking.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4133</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4133/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

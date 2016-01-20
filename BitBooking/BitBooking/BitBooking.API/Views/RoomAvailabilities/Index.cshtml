@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.RoomAvailability>
+
+@{
+    ViewBag.Title = "Index";
+ 
+}
+<div class="container body-content">
+
+    <br />
+    <br />
+    <div class="divider">
+        <div class="destination-info">
+            <h3>Room Availabilitiy</h3>
+            <br />
+            <br />
+
+            @*<h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccomodationId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArrivalDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartureDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsPaid)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalPrice)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccomodationId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ArrivalDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartureDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsPaid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalPrice)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.RoomAvailabilityId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.RoomAvailabilityId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.RoomAvailabilityId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+          
+        </div>
+    </div>
+    <br />
+    <br />
+
+</div>

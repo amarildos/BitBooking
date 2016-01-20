@@ -1,0 +1,44 @@
+﻿
+<hr />
+<div class="container">
+    <div class="row">
+        <div>
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="/Images/commentImage.png" alt="" class="img-rounded img-responsive" style="width:220px; height:240px; float:right"/>
+                    </div>
+                    <div class="col-sm-6 col-md-8" style="overflow-y:scroll; overflow-x: hidden;height:500px;">
+                        <div ng-if="logCtrl.userService.userComments.length===0"><h3 class="lh1em mt40">- You haven't jet commented any accomodation!</h3></div>
+                        <div class="box-grids" ng-repeat="item in  logCtrl.userService.userComments">
+                            
+                            <div class="box-grids">
+                                <div class="col-md-12 client wow fadeInLeft" data-wow-delay="0.5s">
+                                    <div class="box-grid">
+                                        <span></span>
+                                        <p>
+                                            <center>Accommodation Name: <strong>{{item.AccomodationName}}</strong></center>
+                            <hr />
+                                            <i>Comment Text:</i>
+                                            {{item.Comment}}
+                                        </p>
+                                        <label></label>
+                                    </div>
+                            <br />
+                                    <strong><i>Comment Rating:</i></strong> <div star-rating rating="item.Rating" read-only="true"></div>
+                                </div>
+                                <hr />
+
+                                <div class="clearfix"></div>
+                            <br />
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="~/Content/favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.css">
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Administration Page", "Index", "Accomodations", new { area = "" }, new { @class = "navbar-brand" })
+        }
+        else
+        { @Html.ActionLink("Administration Page", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+
+
+        <div class="container">
+            <div class="navbar-header col-lg-12">
+                <button type="button" class="navbar-toggle col-lg-6" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+                @if (User.IsInRole("Hotel Manager"))
+                {
+                    @*<div class="dropdown col-lg-3">
+                        <button style="color:white" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            ACCOMODATION Links
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Accomodation", "Index", "Accomodations")</li>
+                            <li>@Html.ActionLink("Rooms", "Index", "Rooms")</li>
+                            <li>@Html.ActionLink("Accomodation Facilities", "Index", "AccomodationFacilities")</li>
+                            <li>@Html.ActionLink("Accomodation Services", "Index", "AccomodationServices")</li>
+                            <li>@Html.ActionLink("Room Prices", "Index", "RoomPrices")</li>
+                            <li>@Html.ActionLink("Accomodation Information", "Index", "AccomodationInfoes")</li>
+                            <li>@Html.ActionLink("Photos", "Index", "Photos")</li>
+                        </ul>
+                    </div>*@
+    <i>You are now logged As Hotel Manager</i>
+                }
+                @if (User.IsInRole("Hotel Manager"))
+                {
+                    @*<div class="dropdown col-lg-3">
+                        <button style="color:whitesmoke" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Type Managment                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Accomodation Types", "Index", "AccomodationTypes")</li>
+                            <li>@Html.ActionLink("Room Types", "Index", "RoomTypes")</li>
+                            <li>@Html.ActionLink("Accomodation Service Types", "Index", "AccomodationServiceTypes")</li>
+                            <li>@Html.ActionLink("User Comments", "Index", "UserComments")</li>
+                            <li>@Html.ActionLink("Invitations", "Index", "Tokens")</li>
+                            <li>@Html.ActionLink("Promotions", "Index", "Promotions")</li>
+                        </ul>
+                    </div>*@
+ 
+                }
+
+                @if (User.IsInRole("Administrator"))
+                {
+
+                    @*<div class="dropdown col-lg-3">
+                        <button style="color:red" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Administration
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Application Roles", "Index", "Roles")</li>
+                            <li>@Html.ActionLink("Application Users", "Index", "ApplicationUsers")</li>
+                            <li>@Html.ActionLink("Invite tokens", "Index", "Tokens")</li>
+                            <li>@Html.ActionLink("User comments", "Index", "UserComments")</li>
+
+                        </ul>
+                    </div>*@
+
+    <b>You are now logged As Administrator</b>
+
+
+                }
+
+                @Html.Partial("_LoginPartial")
+            </div>
+
+            
+            <!--Our Dropdown MENU-->
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("ACCOMODATION", "Index", "Accomodations")</li>
+                        <li>@Html.ActionLink("Accomodation Types", "Index", "AccomodationTypes")</li>
+                        <li>@Html.ActionLink("ROOM", "Index", "Rooms")</li>
+                        <li>@Html.ActionLink("Room Types", "Index", "RoomTypes")</li>
+                        <li>@Html.ActionLink("SERVICES", "Index", "AccomodationServices")</li>
+                        <li>@Html.ActionLink("Service types", "Index", "AccomodationServiceTypes")</li>
+                    </ul>*@
+
+            </div>
+        </div>
+    </div>
+
+   
+    @if (User.IsInRole("Administrator")||User.IsInRole("Hotel Manager"))
+      {
+        <div class="row  row-offcanvas-left">
+          
+                <div class=" col-md-2 sidebar-offcanvas" id="sidebar" role="navigation" style="margin-left:25px">
+@if (User.IsInRole("Hotel Manager"))
+{ 
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Accomodation", "Index", "Accomodations")</li>
+                        <li>@Html.ActionLink("Rooms", "Index", "Rooms")</li>
+                        <li>@Html.ActionLink("Accomodation Facilities", "Index", "AccomodationFacilities")</li>
+                        <li>@Html.ActionLink("Accomodation Services", "Index", "AccomodationServices")</li>
+                        <li>@Html.ActionLink("Room Prices", "Index", "RoomPrices")</li>
+                        <li>@Html.ActionLink("Accomodation Information", "Index", "AccomodationInfoes")</li>
+                        <li>@Html.ActionLink("Photos", "Index", "Photos")</li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Accomodation Types", "Index", "AccomodationTypes")</li>
+                        <li>@Html.ActionLink("Room Types", "Index", "RoomTypes")</li>
+                        <li>@Html.ActionLink("Accomodation Service Types", "Index", "AccomodationServiceTypes")</li>
+                        <li>@Html.ActionLink("User Comments", "Index", "UserComments")</li>
+                        <li>@Html.ActionLink("Invitations", "Index", "Tokens")</li>
+                        <li>@Html.ActionLink("Promotions", "Index", "Promotions")</li>
+                    </ul>
+}
+else
+{ 
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Application Roles", "Index", "Roles")</li>
+                        <li>@Html.ActionLink("Application Users", "Index", "ApplicationUsers")</li>
+                        <li>@Html.ActionLink("Invite tokens", "Index", "Tokens")</li>
+                        <li>@Html.ActionLink("User comments", "Index", "UserComments")</li>
+                    </ul>
+}
+
+                </div>
+                
+
+
+
+            <div class="col-sm-9 col-md-9">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year -BitCamp BiTBooking Application</p>
+                </footer>
+
+            </div>
+            </div>
+      }
+
+    else
+    { <div class="container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year -BitCamp BiTBooking Application</p>
+        </footer>
+
+    </div> }
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.js"></script>
+        @RenderSection("scripts", required: false)
+</body>
+</html>
+<script>$(document).ready(function () {
+    $('[data-toggle=offcanvas]').click(function () {
+        $('.row-offcanvas').toggleClass('active');
+    });
+});</script>

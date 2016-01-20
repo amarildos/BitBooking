@@ -1,0 +1,72 @@
+﻿
+<div class="container">
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            <h8>- Accommodation Room List -</h8>
+        </center>
+    </div><hr /><br />
+    <div class="row">
+        <div class="col-sm-6 col-md-4" ng-repeat="room in SRCtrl.SellerService.sellerRooms">
+            <div class="thumbnaill">
+               
+                <div class="caption">
+                    <center>
+                        <h3><strong>{{room.RoomType.RoomTypeName}}</strong></h3>
+                        <hr />
+                    </center>
+                    </div>
+                    <!--<img src="/Images/m1.png" style="width:60px; height:60px" alt="...">-->
+                    <!--<div ng-repeat="photo in room.RoomType.ListOfPhotos | filter: {Priority: 0}|filter: {RoomTypeId: 0}">
+            <img src="{{photo.PhotoUrl}}" style="width:60px; height:60px" alt="...">
+        </div-->
+                
+                    <br /><img src="/Images/m1.png" alt="Room Cover photo" style="position:absolute;top:120px;left:85px; width:180px;height:180px;" />
+                    <slick style="width:300px;position:absolute;left:27px;top:95px" dots="true" autoplay="true" lazy-load='ondemand' infinite="true" speed=300 slides-to-show=1 touch-move="false" slides-to-scroll=1 class="slider lazy">
+                        <div ng-repeat="photo in room.RoomType.ListOfPhotos | filter: {Priority: 0}"><center><img class=" img-responsive" src="{{photo.PhotoUrl}}"></center></div>
+                    </slick>
+                
+
+               
+                    <div class="captionn">
+                       
+                        <div class="col-md-12">
+                            <center>
+
+                                <p>{{room.RoomDetails}}</p>
+                            </center>
+                        </div>
+                        <div class="down">
+                            <hr />
+                            <center>
+                                <strong>
+                                    <p>Price: {{room.Price | currency:"USD$"}}</p>
+                                    <p>Number of rooms: {{room.NumberOfRooms}}</p>
+                                </strong>
+                                <hr />
+                                <a class="btn btn-success" ui-sref="managePhotos({roomTypeId:room.RoomType.RoomTypeId })"><i class="fa fa-camera"></i> Photos</a>
+                            <a class="btn btn-info" ui-sref="editRoom({roomId:room.RoomId })" href="#/details/1">
+                                <i class="fa fa-pencil-square-o"></i>
+                                    Edit
+                                </a>
+                             
+
+                                <button type="button" class="btn btn-danger"  data-nq-modal-box="" data-box-type="confirm"  data-after-confirm="SRCtrl.SellerService.deleteRoom($index)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+    Are you sure you want to delete this room ?
+</p>">
+                                    <i class="fa fa-times"></i> DELETE
+</button>
+</center><br />
+                        </div>
+                    </div>
+                </div>
+          
+        </div>
+    </div>
+    <br /><br /><hr /><br /><center>
+        <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+    </center>
+
+</div>
+
+

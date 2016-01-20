@@ -1,0 +1,26 @@
+﻿@model BitBooking.DAL.Models.AccomodationType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AccomodationType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccomodationTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccomodationTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccomodationTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

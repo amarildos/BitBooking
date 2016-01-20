@@ -1,0 +1,39 @@
+﻿<div class="container">
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            <h8>- All Accommodation Reservations -</h8>
+        </center>
+    </div><hr /><br /><br />
+    <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-hover">
+
+        <thead>
+            <tr class="info">
+                <th><h4>Accommodation</h4></th>
+                <th><h4>Room Type</h4></th>
+                <th><h4>Arrival Date</h4></th>
+                <th><h4>Departure Date</h4></th>
+                <th><h4>Total Price</h4></th>
+                <th><h4>Status</h4></th>
+                <th><h4>User Email</h4></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="list in SRCtrl.SellerService.sellerReservations">
+                <th><h4>{{list.AccommodationName}}</h4></th>
+                <th><h4>{{list.RoomName}}</h4></th>
+                <th><h4>{{list.ArrivalDate|jsDate | date:"dd-MM-yyyy"}}</h4></th>
+                <th><h4>{{list.DepartureDate|jsDate | date:"dd-MM-yyyy"}}</h4></th>
+                <th><h4>{{list.TotalPrice | number:2}} USD</h4></th>
+                <th ng-show="list.IsPaid == true"><h4><strong>Paid</strong></h4></th>
+                <th ng-show="list.IsPaid == false"><h4><strong>Reserved</strong></h4></th>
+                <th><h4>{{list.UserEmail}}</h4></th>
+            </tr>
+        </tbody>
+    </table>
+
+    <br /><hr /><br /><br /><center>
+    <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+</center>
+</div>

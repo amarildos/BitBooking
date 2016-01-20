@@ -1,0 +1,150 @@
+﻿<div class="container">
+    <br /><hr /><br />
+    <div class="letters">
+        <center><h8>- PHOTO UPLOAD - Main photo and Room Photos -</h8></center><br /><hr />
+    </div>
+</div>
+
+
+<div ng-controller="PhotoControllerForRoomPhotos" nv-file-drop="" uploader="uploader"
+     filters="queueLimit, customFilter">
+    <div class="container">
+        <div class="uploadProgress">
+
+            <div class="col-md-12">
+                <h4>Suggested minimum photo dimension is: <strong>340 x 223 px:</strong></h4>
+                <br />
+                <input type="file" nv-file-select="" uploader="uploader" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="margin-bottom: 40px">
+                    <br />
+                    <p>Number of selected photos for upload: {{ uploader.queue.length }}</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Photo</th>
+                                <th ng-show="uploader.isHTML5">Size</th>
+                                <th ng-show="uploader.isHTML5">Progress</th>
+                                <!--<th>Status</th>-->
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in uploader.queue">
+                                <td>
+                                    <strong>{{ item.file.name }}</strong>
+                                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                                </td>
+                                <td ng-show="uploader.isHTML5" nowrap>
+                                    {{ item.file.size/1024/1024|number:2 }} MB
+                                </td>
+
+                                <td ng-show="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar"
+                                             ng-style="{ 'width': item.progress + '%' }">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span ng-show="item.isSuccess">
+                                        <i class="glyphicon glyphicon-ok">
+                                        </i>
+                                    </span>
+                                    <span ng-show="item.isCancel">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                    </span>
+                                    <span ng-show="item.isError">
+                                        <i class="glyphicon glyphicon-remove">
+                                        </i>
+                                    </span>
+                                </td>
+                                <td nowrap>
+                                    <button type="button" class="btn btn-success btn-xs"
+                                            ng-click="item.upload()" ng-disabled="item.isReady ||
+                                                     item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs"
+                                            ng-click="item.remove()">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<div>
+                        <div>
+                            <h4>Upload progress:</h4>
+                            <div class="progress" style="">
+                                <div class="progress-bar" role="progressbar"
+                                     ng-style="{ 'width': uploader.progress + '%' }"></div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    
+    <div class="alert alert-info" role="alert"> <center><h4>- Accomodation (Main Photos) -</h4></center></div>
+   
+    <br />
+    <div ng-repeat="photo in PhotoCtrl.service.accPhotos | filter: {Priority: 1}" class="img col-md-4" style="height:300px; margin-bottom:40px">
+        <img style="resize:both; height:100%; width:100%; position:initial" src="{{photo.PhotoUrl}}" alt="Alternate Text" />
+
+
+        <button type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" style="width:100%" data-after-confirm="PhotoCtrl.service.deletePhoto(photo.PhotoId)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                <p>
+                Are you sure you want to delete this main accommodation photo?</p>">
+            DELETE
+        </button>
+
+    </div>
+  
+</div>
+<hr />
+<br />
+<br />
+<div class="container">
+    <div class="alert alert-info" role="alert"> <center><h4>- Room Photos-</h4></center></div>
+   
+    <div ng-repeat="photo in PhotoCtrl.service.accPhotos | filter: {Priority: 0}" class="img col-md-4" style="height:300px; margin-bottom:40px">
+        <img style="resize:both; height:100%; width:100%; position:initial" src="{{photo.PhotoUrl}}" alt="Alternate Text" />
+
+        <button type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" style="width:100%" data-after-confirm="PhotoCtrl.service.deletePhoto(photo.PhotoId)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                <p>
+                Are you sure you want to delete this room photo?</p>">
+            DELETE
+        </button>
+    </div>
+   
+</div>
+<hr />
+<br />
+<br />
+
+<div class="container">
+    <div class="alert alert-info" role="alert"> <center><h4>- Facility Photos -</h4></center></div>
+    
+    <div ng-repeat="photo in PhotoCtrl.service.accPhotos | filter: {Priority: 99}" class="img col-md-4" style="height:300px; margin-bottom:40px">
+        
+        <img style="resize:both; height:100%; width:100%; position:initial" src="{{photo.PhotoUrl}}" alt="Alternate Text" />
+
+        <button type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" style="width:100%" data-after-confirm="PhotoCtrl.service.deletePhoto(photo.PhotoId)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                <p>
+                Are you sure you want to delete this facility photo?</p>">
+            DELETE
+        </button>
+
+    </div>
+    <hr />
+    <br />
+    <br />
+</div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.RoomAvailability>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccomodationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccomodationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoomAvailabilityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoomAvailabilityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoomAvailabilityId })
+        </td>
+    </tr>
+}
+
+</table>

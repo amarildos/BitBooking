@@ -1,0 +1,92 @@
+﻿@model BitBooking.DAL.Models.AccomodationService
+
+
+<br>
+<button data-id="" type="button" class="btn flokson btn-info btn-lg" data-toggle="modal" data-target="#myModel">Add More Fields</button>
+
+
+    <title>Add Services</title>
+
+
+
+
+
+    <div class="col-lg-12"> 
+
+        <h4>Please List Your All Accomodation Service You have in your Accomodation. You Will be able to Add new ones Later!</h4>
+
+
+        @using (Html.BeginForm("AddServices", "LastStep"))
+        {
+            @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="col-sm-4">
+        <div class="form-horizontal">
+          
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccomodationServiceTypeId, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("AccomodationServiceTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AccomodationServiceTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="modal-bodys">
+
+
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" style="position:page; margin-bottom:15px" />
+                    <br>
+                </div>
+                <br>
+            </div>
+        
+        }
+
+
+        <br>
+        <img src="http://www.priceline.com/promo/images/RC_splash_0409_banner.jpg" style="width:100%">
+    </div>
+<br>
+
+
+
+@section scripts {
+    <script>
+    $(document).ready(function () {
+
+        $('.flokson').click(function (event) {
+            async: false;
+            console.log("fail" );
+            var button = $(event.relatedTarget);
+         //   var id = button.data("id");
+            var url = "/LastStep/Create";
+            $.ajax({ url: url }).success(function (msg) {
+
+                var studentName = $('a[href="/LastStep/Create"]').text();
+          
+              //  var test = $('.modal-body').val();
+                $('.modal-body').append("<div class='col-sm-4'>"+msg+"</div>");
+            }).error(function (msg) { console.log("fail" + msg); });
+        });
+
+
+    });
+    </script>
+}

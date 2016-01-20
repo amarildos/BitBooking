@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.Room>
+
+
+@{
+    ViewBag.Title = "ShowAvailableRooms";
+}
+<!-- Price section -->
+<section id="price">
+    <div class="container">
+        <div class="row">
+
+            <div class="sec-title text-center wow animated fadeInDown">
+                <h2>List of available rooms</h2>
+                <p>Check all information below:</p>
+            </div>
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 wow animated fadeInUp" data-wow-delay="0.5s">
+                    <div class="price-table featured text-center">
+                        
+                        <h3>@Html.DisplayFor(modelItem => item.Accomodation.AccomodationName)</h3>
+                        <div class="value">
+                            <span>€</span>
+                            <span>@Html.DisplayFor(modelItem => item.TempTotalPrice)</span><br>
+                            <span>Total price</span><br />
+                            <span>Price per night: @Html.DisplayFor(modelItem => item.Price)</span>
+                        </div>
+                        <ul>
+                            <li><strong>@Html.DisplayNameFor(model => model.RoomType.RoomTypeName) :</strong> @Html.DisplayFor(modelItem => item.RoomType.RoomTypeName)</li>
+                            <li><strong>@Html.DisplayNameFor(model => model.RoomCapacity) :</strong> @Html.DisplayFor(modelItem => item.RoomCapacity) person/s
+                            <li><strong>@Html.DisplayNameFor(model => model.TempArrivalDate) :</strong> @Html.DisplayFor(modelItem => item.TempArrivalDate)</li>
+                            <li><strong>@Html.DisplayNameFor(model => model.TempDepartureDate) :</strong> @Html.DisplayFor(modelItem => item.TempDepartureDate)</li>
+
+                            
+                            <li>@Html.ActionLink("Reserve Room - Confirmation", "ReserveRoom", "RoomAvailabilities", new { id = item.RoomId, ArrivalDate = item.TempArrivalDate, DepartureDate = item.TempDepartureDate, IsPaid = item.TempIsPaid, TotalPrice = item.TempTotalPrice, UserId = item.TempUserId, Price = item.Price },null)</li>
+                            
+                        </ul>
+                        
+                            <ul>
+                                <li>Or</li>
+                                <li>@Html.ActionLink("Back to search", "Index",null,null)</li>
+                            </ul>
+                       
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- end Price section -->

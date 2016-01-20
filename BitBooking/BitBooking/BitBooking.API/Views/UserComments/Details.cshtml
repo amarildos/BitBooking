@@ -1,0 +1,48 @@
+﻿@model BitBooking.DAL.Models.UserComment
+
+@{
+   
+    Layout = null;
+    }
+
+
+
+<div>
+    <h4>My Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            <input id="input-2aa" class="rating" name="Ratinga" data-min="0" data-max="5" data-step="1" data-stars=5 data-glyphicon="false" data-readonly="true" value="@Model.Rating">
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+   
+
+
+    </dl>
+</div>
+
+
+
+@Scripts.Render("~/bundles/bootstrap")
+

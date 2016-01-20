@@ -1,0 +1,350 @@
+﻿
+<div class="banner">
+    <div class="container">
+        <div class="sec-title text-center wow animated fadeInDown">
+            <div class="wellcome">
+                <img class="img-responsive" src="/Images/Picture1.png" />
+            </div>
+            </div>
+            <br />
+            <!--START - SEARCH ACCOMODATION FORM-->
+            <center>
+                <div class="searchDiv">
+                    <div class="divider">
+                        <div class="row destination-info">
+                            <div>
+                                <div class="lettersMain">
+                                    <h8>Search accommodation:</h8>
+                                </div><br />
+                                <form name="datepickerForm" class="form-inline" role="form">
+                                    <!-- Date range example -->
+                                    <div class="form-group">
+                                        <label class="fafa"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i></label><br>
+                                        <br />
+                                        <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" class="form-control-date" ng-model="accomodationListCtrl.service.fromDate" data-min-date="today" data-max-date="{{accomodationListCtrl.service.untilDate}}" placeholder="           Arrival Date" bs-datepicker autoclose="true">
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" class="form-control-date" ng-model="accomodationListCtrl.service.untilDate" data-min-date="{{accomodationListCtrl.service.fromDate}}" placeholder="        Departure Date" bs-datepicker autoclose="true">
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <br />
+                                <br />
+                                <div class="search">
+                                    <div id="custom-search-input">
+                                        <div class="input-group">
+
+                                            <!--ACCOMODATION SUGGESTION SEARCH - START-->
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <select name="accomodationListCtrl.service.SelectedAccomodationCountryForSearch"
+                                                        data-nq-select="accomodationListCtrl.service.SelectedAccomodationCountryForSearch"
+                                                        data-qo-placeholder="Search countries"
+                                                        ng-change="accomodationListCtrl.service.filterCities();accomodationListCtrl.service.filterAccommodation()"
+                                                        ng-options="AccomodationCountry.accomodationCountry for AccomodationCountry in accomodationListCtrl.service.optionsForSelectCountry | orderBy:'accomodationCountry' | filter: accomodationListCtrl.filterCountries(accomodationListCtrl.service.SelectedAccomodationCityForSearch.accomodationCountry)"
+                                                        data-ng-model="accomodationListCtrl.service.SelectedAccomodationCountryForSearch"></select>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <select name="accomodationListCtrl.service.SelectedAccomodationCityForSearch"
+                                                        data-nq-select="accomodationListCtrl.service.SelectedAccomodationCityForSearch"
+                                                        data-qo-placeholder="Search cities"
+                                                        ng-change="accomodationListCtrl.service.filterAccommodation()"
+                                                        ng-options="AccomodationCity.accomodationCity for AccomodationCity in accomodationListCtrl.service.optionsForSelect | orderBy:'accomodationCity' | filter: accomodationListCtrl.filterCities(accomodationListCtrl.service.SelectedAccomodationCountryForSearch.accomodationCountry) "
+                                                        data-ng-model="accomodationListCtrl.service.SelectedAccomodationCityForSearch"></select>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <select name="accomodationListCtrl.service.SelectedAccomodationForSearch"
+                                                        data-nq-select="accomodationListCtrl.service.SelectedAccomodationForSearch"
+                                                        data-qo-placeholder="All Accommodations"
+                                                        ng-options="Accomodation.accomodationName for Accomodation in accomodationListCtrl.service.optionsForSelectAccommodation | orderBy:'accomodationName' | filter: accomodationListCtrl.filterAccommodation(accomodationListCtrl.service.SelectedAccomodationCityForSearch.accomodationCity)"
+                                                        data-ng-model="accomodationListCtrl.service.SelectedAccomodationForSearch"></select>
+                                            </div>
+                                            <!--ACCOMODATION SUGGESTION SEARCH - END-->
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <select name="accomodationListCtrl.service.numberOfPersonsToSearch" data-nq-select="" data-qo-placeholder="Number of persons" data-ng-model="accomodationListCtrl.service.numberOfPersonsToSearch">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                    <option>10</option>
+                                                    <option>11</option>
+                                                    <option>12</option>
+                                                    <option>13</option>
+                                                    <option>14</option>
+                                                    <option>15</option>
+                                                    <option>16</option>
+                                                    <option>17</option>
+                                                    <option>18</option>
+                                                    <option>19</option>
+                                                    <option>20</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <select name="accomodationListCtrl.service.numberOfStarsSearch" data-nq-select="" data-qo-placeholder="Accommodation Rating - Star Rating" data-ng-model="accomodationListCtrl.service.numberOfStarsSearch">
+                                                    <center>  <option>1</option></center>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <div class="highestPrice">
+                                                    MAXIMUM PRICE :  <input type="number" ng-model="accomodationListCtrl.service.totalPriceSearch" min="0" /> $
+                                                </div>
+                                            </div>
+
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info btn-lg" type="button" ng-click="accomodationListCtrl.service.search()">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </button>
+                                            </span>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br />
+                    </div>
+                </div>
+            </center>
+
+            <!--END - SEARCH ACCOMODATION FORM-->
+
+
+        </div><br />
+    </div>
+
+
+
+<!-- banner-bottom -->
+<div class="banner-bottom">
+    <!-- container -->
+    <div class="container">
+        <div class="letters">
+            <center> <h8>- Plan your perfect trip with us -</h8></center>
+
+        </div><br />
+        <div class="banner-bottom-grids">
+            <div class="col-md-6 banner-bottom-grid">
+                <div class="col-md-5 banner-bottom-left">
+                    <img src="images/2.png" alt="" />
+                </div>
+                <div class="col-md-7 banner-bottom-right">
+                    <h4>About Us:</h4>
+                    <p>
+                        BitBooking.com is an informative, user-friendly website – that guarantees the best available traveling arangements.
+                        To help leisure and business travelers, whatever their budgets, easily discover, book, and enjoy the world’s best places to stay.
+                    </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-6 banner-bottom-grid">
+                <div class="col-md-5 banner-bottom-left">
+                    <img src="images/3.png" alt="" />
+                </div>
+                <div class="col-md-7 banner-bottom-right">
+                    <h4>Our Vision:</h4>
+                    <p>
+                        Our goal is to provide business and leisure travelers with the most accessible and cost-effective way of discovering and booking the broadest
+                        selection of accommodations, in every corner of the world.
+                    </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div><br /><br />
+    <!-- container -->
+</div>
+<!-- //banner-bottom -->
+
+
+    <div class="clearfix"> </div>
+
+
+
+
+
+
+    <div class="destinationA">
+        <div class="container" id="topHotels">
+            <!-- portfolio section -->
+            <section id="portfolio" class="col-lg-12">
+                <div class="destination-infoIndex">
+
+
+                    <div class="sec-title text-center wow animated fadeInDown">                    
+                            <img src="/Images/bbh.png" style="width:300px; float:left" /><br /><hr />                   
+                    </div>
+                    <br />
+                    <!--Begin of FOREACH LOOP for Acoomodation list on Index page-->
+                    <div class=" col-lg-4" ng-repeat="accomodation in accomodationListCtrl.service.sponsored3list">
+                        <div class=" project-wrapper wow animated fadeInUp">
+                            <div style="height:260px" class="portfolio-item">
+                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                    <h3 class="accName">{{ accomodation.AccomodationName }}</h3>
+                                </a>
+                           
+                                <slick dots="true" autoplay="true" lazy-load='ondemand' infinite="true" speed=300 slides-to-show=1 touch-move="false" slides-to-scroll=1 class="slider lazy">
+                                    <div ng-repeat="image in accomodation.ListOfPhotos |filter: {Priority: 1}">
+                                        <center>
+                                            <center>
+                                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                                    <img class=" img-responsive" ng-src="{{image.PhotoUrl}}">
+                                                </a>
+                                            </center>
+
+                                        </center>
+                                    </div>
+
+                                </slick>
+                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                    <figcaption class=" mask">
+                                        <p>
+                                            Rating: {{ accomodation.StarRating }} stars
+                                            <br />
+                                            Number of rooms: {{ accomodation.NumberOfRooms }}
+                                            <br />
+                                            Country: {{ accomodation.AccomodationInfo.Country }}
+                                            <br /><br />
+                                        </p>
+                                    </figcaption>
+                                </a>
+                            </div>
+                            <div class="accDesc">
+                                {{ accomodation.Description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="destinationA1">
+        <div class="container" id="topHotels">
+            <!-- portfolio section -->
+            <section id="portfolio" class="col-lg-12">
+                <div class="destination-infoIndex">
+
+
+                    <div class="sec-title text-center wow animated fadeInDown">
+                        <img src="/Images/lph.png" style="width:300px; float:right" /><br /><hr />  
+                    </div>
+                    <br />
+                    <!--Begin of FOREACH LOOP for Acoomodation list on Index page-->
+                    <div class=" col-lg-4" ng-repeat="accomodation in accomodationListCtrl.service.sponsored2list">
+                        <div class="project-wrapper wow animated fadeInUp ">
+                            <div style="height:260px" class="portfolio-item">
+                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                    <h3 class="accName">{{ accomodation.AccomodationName }}</h3>
+                                </a>
+                              
+                                <slick dots="true" autoplay="true" lazy-load='ondemand' infinite="true" speed=300 slides-to-show=1 touch-move="false" slides-to-scroll=1 class="slider lazy">
+                                    <div ng-repeat="image in accomodation.ListOfPhotos |filter: {Priority: 1}">
+                                        <center>
+                                            <center>
+                                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                                    <img class=" img-responsive" ng-src="{{image.PhotoUrl}}">
+                                                </a>
+                                            </center>
+                                        </center>
+                                    </div>
+
+                                </slick>
+                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                    <figcaption class=" mask">
+                                        <p>
+                                            Rating: {{ accomodation.StarRating }} stars
+                                            <br />
+                                            Number of rooms: {{ accomodation.NumberOfRooms }}
+                                            <br />
+                                            Country: {{ accomodation.AccomodationInfo.Country }}
+                                            <br /><br />
+                                        </p>
+                                    </figcaption>
+                                </a>
+                            </div>
+                            <div class="accDesc">
+                                {{ accomodation.Description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div class="destinationA3">
+        <div class="container" id="topHotels">
+            <!-- portfolio section -->
+            <section id="portfolio" class="col-lg-12">
+                <div class="destination-infoIndex">
+
+
+                    <div class="sec-title text-center wow animated fadeInDown">                       
+                            <img src="/Images/brh.png" style="width:300px; float:left" /><br /><hr />        
+                    </div>
+                    <br />
+                    <!--Begin of FOREACH LOOP for Acoomodation list on Index page-->
+                    <div class=" col-lg-4" ng-repeat="accomodation in accomodationListCtrl.service.sponsored1list">
+                        <div class="project-wrapper wow animated fadeInUp ">
+                            <div style="height:260px" class="portfolio-item">
+                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                    <h3 class="accName">{{ accomodation.AccomodationName }}</h3>
+                                </a>
+
+                                <slick dots="true" autoplay="true" lazy-load='ondemand' infinite="true" speed=300 slides-to-show=1 touch-move="false" slides-to-scroll=1 class="slider lazy">
+                                    <div ng-repeat="image in accomodation.ListOfPhotos |filter: {Priority: 1}">
+                                        <center>
+                                            <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                                <img class=" img-responsive" ng-src="{{image.PhotoUrl}}">
+                                                </a>
+                                        </center>
+                                    </div>
+
+                                </slick>
+                                <a ui-sref="details({accomodationId:accomodation.AccomodationId })">
+                                    <figcaption class=" mask">
+                                        <p>
+                                            Rating: {{ accomodation.StarRating }} stars
+                                            <br />
+                                            Number of rooms: {{ accomodation.NumberOfRooms }}
+                                            <br />
+                                            Country: {{ accomodation.AccomodationInfo.Country }}
+                                            <br /><br />
+                                        </p>
+                                    </figcaption>
+                                </a>
+                            </div>
+                            <div class="accDesc">
+                                {{ accomodation.Description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+

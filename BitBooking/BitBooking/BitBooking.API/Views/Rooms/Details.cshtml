@@ -1,0 +1,91 @@
+﻿@model BitBooking.DAL.Models.Room
+
+@{
+    Layout = null;
+}
+
+
+
+<!-- about -->
+<div class="about">
+    <div class="destination-info">
+        <!-- container -->
+        @*<div class="container">
+            <div class="about-info">*@
+        <br />
+                <h3>Room details - @Model.Accomodation.AccomodationName</h3>
+            </div>
+    <br>
+            @*<div class="about-info-bottom">*@
+                @try
+                {
+                    <img src='@Model.Accomodation.ListOfPhotos.FirstOrDefault(x=> x.RoomTypeId == Model.RoomTypeId && x.Priority == 4 && x.AccomodationId == Model.AccomodationId).PhotoUrl' />
+                }
+                catch
+                {
+                    <img src='http://www.holidaycheck.com/assets/4.21.0/images/dummy-pictures/hotel_450x310.png' />
+                }
+                <div class="about-info-text">
+
+                    <div class=" row">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.RoomType.RoomTypeName)
+                            </dt>
+
+                            <dd >
+                                @*<span class="glyphicon glyphicon-plane"></span>*@
+                                @Html.DisplayFor(model => model.RoomType.RoomTypeName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NumberOfRooms)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.NumberOfRooms)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </dt>
+                            <dd>
+                        
+                                @Html.DisplayFor(model => model.Price)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.RoomCapacity)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.RoomCapacity)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.RoomDetails)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.RoomDetails)
+                            </dd>
+
+                     
+                            <dd>
+
+                                @*<button type="button" class="btn btn-primary" id="colorButton"> @Html.ActionLink("Room list", "Details", "Accomodations", new { id = Model.AccomodationId }, null) </button>*@
+
+</dl>
+                     
+                    </div>
+
+                   
+                </div>
+            </div>
+        @*</div>
+    </div>*@
+    <!-- //container -->
+@*</div>*@
+
+
+
+<!-- //about -->

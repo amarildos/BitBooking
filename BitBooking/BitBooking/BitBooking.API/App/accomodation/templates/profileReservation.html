@@ -1,0 +1,89 @@
+﻿
+    <div class="sec-title wow animated fadeInDown">
+        <div class="letters">           
+                <hr /><h3 class="lh1em mt40">- Rooms You Reserved:</h3>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-striped table-bordered table-condensed">
+
+                            <thead>
+                                <tr>
+                                    <th><h4><strong>Accommodation Name</strong></h4></th>
+                                    <th><h4><strong>Room Type</strong></h4></th>
+                                    <th><h4><strong>Arrival Date</strong></h4></th>
+                                    <th><h4><strong>Departure Date</strong></h4></th>
+                                    <th><h4><strong>Total Price</strong></h4></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ng-repeat="list in logCtrl.userService.userReservations" ng-show="list.IsPaid == true">
+                                    <th><a ui-sref="details({accomodationId:list.AccomodationId })">{{list.AccommodationName}} </a></th>
+                                    <th><h4>{{list.RoomName}}</h4></th>
+                                    <th><h4>{{list.ArrivalDate|jsDate | date:"dd-MM-yyyy"}}</h4></th>
+                                    <th><h4>{{list.DepartureDate|jsDate | date:"dd-MM-yyyy"}}</h4></th>
+                                    <th><h4>{{list.TotalPrice}} USD</h4></th>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Reservation page...{{logCtrl.userService.userReservations[0].ArrivalDate |jsDate | date:"yyyy-MM-dd" }}-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="sec-title wow animated fadeInDown">
+    <div class="letters">
+        <h3 class="lh1em mt40">- Paid Reservations:</h3>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-striped table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_SbyPP_mc_vs_ms_ae_UK.png" alt="Alternate Text" />
+                                    <br />
+                                    <button ng-show="logCtrl.userService.ShowPayButton" class="btn btn-blue" ng-click="logCtrl.userService.PayForAccomodation()">Checkout via PayPal - <strong>Total: {{logCtrl.userService.totalPriceForPayment | number:2}} USD </strong></button>
+                                </tr>
+                                <tr>
+                                    <th><h4><strong>Accommodation Name</strong></h4></th>
+                                    <th><h4><strong>Room Type</strong></h4></th>
+                                    <th><h4><strong>Arrival Date</strong></h4></th>
+                                    <th><h4><strong>Departure Date</strong></h4></th>
+                                    <th><h4><strong>Total Price</strong></h4></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-repeat="list in logCtrl.userService.userReservations" ng-show="list.IsPaid == false">
+                                    <th><a ui-sref="details({accomodationId:list.AccomodationId })">{{list.AccommodationName}} </a> </th>
+                                    <th><h4>{{list.RoomName}}</h4></th>
+                                    <th><h4>{{list.ArrivalDate|jsDate | date:"dd-MM-yyyy"}}</h4></th>
+                                    <th><h4>{{list.DepartureDate|jsDate | date:"dd-MM-yyyy"}}</h4></th>
+                                    <th><h4>{{list.TotalPrice}} USD</h4></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

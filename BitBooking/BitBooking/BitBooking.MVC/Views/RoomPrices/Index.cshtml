@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.RoomPrice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Accomodation.AccomodationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomType.RoomTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accomodation.AccomodationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomType.RoomTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecialPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoomPriceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoomPriceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoomPriceId })
+        </td>
+    </tr>
+}
+
+</table>

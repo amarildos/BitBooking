@@ -1,0 +1,59 @@
+﻿<div class="container">
+    
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            <h8>- Manage Your Accommodation Special Prices -</h8>
+        </center>
+    </div><hr /><br />
+    
+    
+    
+    <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-hover">
+
+        <thead>
+            <tr class="info">
+                <th style="font-size:16px">Hotel Name</th>
+                <th style="font-size:16px">Start Date</th>
+                <th style="font-size:16px">End Day</th>
+                <th style="font-size:16px">Price</th>
+                <th style="font-size:16px">RoomType</th>
+                <th style="font-size:16px">Option</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="" ng-repeat="list in SRCtrl.SellerService.sellerPrices">
+                <th style="font-size:14px">{{list.Accomodation.AccomodationName}}</th>
+                <th style="font-size:14px">{{list.StartDate|jsDate | date:"yyyy-MM-dd"}}</th>
+                <th style="font-size:14px">{{list.EndDate|jsDate | date:"yyyy-MM-dd"}}</th>
+                <th style="font-size:14px">{{list.SpecialPrice | number:2}} USD</th>
+                <th style="font-size:14px">{{list.RoomType.RoomTypeName}}</th>
+                <th style="font-size:14px">
+                    <!--<button type="button" class="btn btn-danger" ng-really-message="Are you sure?"
+                            ng-really-click="SRCtrl.SellerService.deleteOffer($index)">
+                        DELETE
+                    </button>-->
+
+                    <button value="delete" type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" data-after-confirm="SRCtrl.SellerService.deleteOffer($index)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                          <p>
+                           Are you sure you want to delete ?</p>">
+                        <i class="fa fa-times"></i>
+                      DELETE
+                    </button>
+
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <hr /><br />
+    <center>
+        <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+    </center>
+    
+    
+    
+    
+    
+    
+    </div>

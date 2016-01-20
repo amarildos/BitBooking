@@ -1,0 +1,196 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.Room>
+
+@{
+    ViewBag.Title = "Accomodation Room Organisation";
+}
+
+<h2>Accomodation Room Organisation</h2>
+<img style="width:100%; margin-bottom:15px" src="https://secure.parksandresorts.wdpromedia.com/resize/mwImage/1/900/160/90/wdpromedia.disney.go.com/media/wdpro-assets/dlr/places-to-stay/paradise-pier/room-rates/paradise-pier-rooms-sliver.jpg?16062014141014" alt="Alternate Text" />
+<p>
+    <button data-id="5" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModel">Add New Room Type</button>
+    <button data-id="5" type="button"  onclick="location.href='@Url.Action("AccomodationPhotos", "LastStep")'" class="btn btn-danger btn-lg">Next Step</button>
+
+</p><div class="lateradded">
+        <table class="table">
+
+            <div class="row zeko">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            @try
+                            {
+                                <img style="height:250px" src="@item.RoomType.ListOfPhotos.FirstOrDefault(x=>x.RoomTypeId==item.RoomTypeId && x.AccomodationId==item.AccomodationId && x.Priority==4).PhotoUrl" alt="...">
+                            }
+                            catch
+                            {
+                                <img style="height:250px" src="http://led.lginnotek.com/images/front/temp/noImageAvailable.jpg " alt="...">
+                            }
+                            <div class="caption">
+                                <h3>@item.RoomType.RoomTypeName</h3>
+                                <p>@item.Accomodation.AccomodationName : $ @item.Price </p>
+                                <p><a href="#" class="btn btn-primary" role="button">Rooms: @item.NumberOfRooms</a> <a href="#" data-id="@item.RoomTypeId" class="btn btn-default" data-toggle="modal" data-target="#myModelPhoto" role="button">Add pictures</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+
+        </table>
+</div>
+
+
+
+<div id="myModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">New Room<span id="student-name"></span>  </h4>
+            </div>
+            <div class="modal-body">
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="myModelPhoto" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal for adding photos  <span id="student-name"></span>  </h4>
+            </div>
+            <div class="modal-body">
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+<script>
+    $(document).ready(function () {
+
+
+        $('#myModel').on('show.bs.modal', function (event) {
+            async: false;
+            var button = $(event.relatedTarget);
+            var id = button.data("id");
+            var url = "/Rooms/Create";
+            $.ajax({ url: url }).success(function (msg) {
+                console.log("proslo");
+              //  var studentName = $('a[href="/Students/Details/' + id + ' "]').text();
+                //$('#student-name').html(studentName);
+                //console.log(studentName);
+                $('.modal-body').html(msg);
+            }).error(function (msg) { console.log("fail" + msg); });
+        });
+
+
+        $('#myModelPhoto').on('show.bs.modal', function (event) {
+            async: false;
+            var button = $(event.relatedTarget);
+            var id = button.data("id");
+            var url = "/Photos/TypeAdd/"+id;
+            $.ajax({ url: url }).success(function (msg) {
+                console.log("proslo");
+                //  var studentName = $('a[href="/Students/Details/' + id + ' "]').text();
+                //$('#student-name').html(studentName);
+                //console.log(studentName);
+                $('.modal-body').html(msg);
+            }).error(function (msg) { console.log("fail" + msg); });
+        });
+
+
+
+
+
+        $('#myModel').on('hide.bs.modal', function (event) {
+            async: false;
+            var button = $(event.relatedTarget);
+            var id = button.data("id");
+            var url = "/Rooms/Specific";
+            $.ajax({ url: url, method: 'get' }).success(function (msg) {
+                $('.lateradded').html("");
+                $('.lateradded').html(msg);
+                console.log("ugaseno");
+                //  var studentName = $('a[href="/Students/Details/' + id + ' "]').text();
+                //$('#student-name').html(studentName);
+                //console.log(studentName);
+                //     $('.zeko').html()
+
+                //   for(var i=0; i<msg.length; i++)
+                // {
+
+                //   $('.zeko').append("<div class='col-sm-6 col-md-4'> <div class='thumbnail'><img src='...'alt='...'><div class='caption'><h3>"+msg[i].RoomType.RoomTypeName+"</h3><p>"+msg[i].Accomodation.AccomodationName+" :"+  msg[i].Price +"</p><p><a href='#' class='btn btn-primary' role='button'+>Rooms:"+ msg[i].NumberOfRooms+"</a> <a href=''#' class='btn btn-default' role='button'>Add pictures</a></p> </div>  </div>  </div>");
+                //                }
+
+
+
+
+
+
+
+
+            })
+        }).error(function (msg) { console.log("fail" + msg); });
+
+
+
+
+
+        $('#myModelPhoto').on('hide.bs.modal', function (event) {
+            async: false;
+            var button = $(event.relatedTarget);
+            var id = button.data("id");
+            var url = "/Rooms/Specific";
+            $.ajax({ url: url, method:'get' }).success(function (msg) {
+                $('.lateradded').html("");
+                $('.lateradded').html(msg);
+                console.log("ugaseno");
+                //  var studentName = $('a[href="/Students/Details/' + id + ' "]').text();
+                //$('#student-name').html(studentName);
+                //console.log(studentName);
+           //     $('.zeko').html()
+
+             //   for(var i=0; i<msg.length; i++)
+               // {
+
+                 //   $('.zeko').append("<div class='col-sm-6 col-md-4'> <div class='thumbnail'><img src='...'alt='...'><div class='caption'><h3>"+msg[i].RoomType.RoomTypeName+"</h3><p>"+msg[i].Accomodation.AccomodationName+" :"+  msg[i].Price +"</p><p><a href='#' class='btn btn-primary' role='button'+>Rooms:"+ msg[i].NumberOfRooms+"</a> <a href=''#' class='btn btn-default' role='button'>Add pictures</a></p> </div>  </div>  </div>");
+//                }
+
+
+
+
+
+
+
+
+            })
+            }).error(function (msg) { console.log("fail" + msg); });
+        });
+
+
+    
+</script>
+}

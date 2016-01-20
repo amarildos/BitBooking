@@ -1,0 +1,126 @@
+﻿<div class="container">
+    <center><img src="/Images/contact_us_image.jpg" height="220" alt="Alternate Text" /></center>
+</div>
+
+    <div class="hotelDetails1"><br />
+        <div class="container hotelDetails">
+            <div class="letters">
+                <center>
+                    <h8>Inbox</h8>
+                </center><hr />
+            </div>
+
+            <div class="letters" ng-show="logCtrl.userService.messages.length == 0">
+                <div class="srz">
+                    
+                    <center>
+                        <h3 class="lh1em mt40">
+                            There are no messages in your inbox!
+                        </h3>
+                    </center>
+                    <br /><br />
+                </div>
+            </div>
+
+
+            <div class="row" ng-show="logCtrl.userService.messages.length != 0">
+
+                <table border="0" class="table table-hover" style="padding-bottom:30px;border-collapse:separate; padding-top:20px; padding-left:150px; padding-right:150px">
+                    <thead>
+                        <tr style="border: 1px solid black;">
+                            <th style="padding-bottom:10px">#</th>
+                            <th style="padding-bottom:10px">Sender</th>
+                            <th style="padding-bottom:10px">Message</th>
+                            <th style="padding-bottom:10px">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="padding-bottom: 30px; border: 1px solid black; border-collapse:separate; padding-top:20px;" ng-repeat="mes in  logCtrl.userService.messages">
+
+                            <td style="padding-bottom:10px">
+                                {{$index + 1 }}
+                            </td>
+
+                            <td style="padding-bottom:10px">
+                                {{mes.senderName}}
+                            </td>
+                            <td style="padding-bottom:10px">
+                                <button style=" resize:both; font-size-adjust:0.8" ng-show="mes.Seen" ng-click="logCtrl.userService.showMessage($index)" class="btn btn-default">
+                                    Inbox
+                                </button><button class="btn btn-success" ng-hide="mes.Seen" ng-click="logCtrl.userService.showMessage($index)"> New Private Message</button>
+                            </td>
+                            <td style="padding-bottom:10px">
+                                {{mes.SentDate|jsDate| date:"dd-MM-yyyy  @ h:mma"}}
+                            </td>
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div ng-show="logCtrl.userService.openMessage" class="col-lg-12">
+                    <div class="messTh">
+                        <div class="thumbnailMessages wow fadeInRight">
+                            <div class="col-md-12">
+                                <h3>Messages:</h3>
+                                <hr />
+                                <div class="col-md-3">
+                                    <h5><strong>Sender's email:</strong></h5>
+                                </div>
+                                <div class="col-md-9">
+                                    {{logCtrl.userService.currentMessage.senderName}}
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <h5><strong>Message content:</strong></h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="col-md-6 textarea">
+                                        <div class="messThText" data-wow-delay="0.5s" readonly>
+                                            {{logCtrl.userService.currentMessage.Content}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="col-md-12">
+                                <div ng-if="logCtrl.userService.currentMessage.SentDate">
+                                    <div class="col-md-3">
+                                        <h5><strong>Message date:</strong></h5>
+                                    </div>
+                                    <div class="col-md-9">
+                                        {{logCtrl.userService.currentMessage.SentDate|jsDate| date:"dd-MM-yyyy"}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--<textarea cols="40" rows="8" placeholder="Reply To the message!" ng-model="logCtrl.userService.replymessage"></textarea>
+                        <br />
+                        <input type="submit" name="name" value="Reply" ng-click="logCtrl.userService.reply()" />-->
+
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <h5><strong>Please enter your answer below:</strong></h5>
+                                </div>
+                                <div class="textarea">
+                                    <form>
+                                        <textarea class="messThText" maxlength="500" ng-model="logCtrl.userService.replymessage"
+                                                  data-wow-delay="0.5s" placeholder="Answer..." required="required"></textarea>
+                                        <center>
+                                            <input class="messThText" data-wow-delay="0.5s" type="submit" value="REPLY"
+                                                   ng-click="logCtrl.userService.reply()" />
+                                        </center>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br />
+        </div>

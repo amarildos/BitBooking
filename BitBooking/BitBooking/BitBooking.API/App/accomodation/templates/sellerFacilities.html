@@ -1,0 +1,65 @@
+﻿<div class="container">
+ 
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            <h8>- Manage Your Accommodation Facilities -</h8>
+        </center>
+    </div><hr /><br />
+
+
+
+    <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-hover col-lg-12">
+
+        <thead>
+            <tr class="info">
+                <th style="font-size:16px">Name</th>
+                <th style="font-size:16px">Description</th>
+                <th style="font-size:16px">Start Hours</th>
+                <th style="font-size:16px">End Hours</th>
+                <th style="font-size:16px">Image</th>
+
+                <th class="col-lg-4"><center>Options</center></th>
+              
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="list in SRCtrl.SellerService.sellerFacilities | orderBy: 'Name'">
+                <th style="font-size:14px">{{list.Name}}</th>
+                <th style="font-size:14px">{{list.Description}}</th>
+                <th style="font-size:14px">{{list.StartHours|jsDate | date:"HH:mm"}}</th>
+                <th style="font-size:14px">{{list.EndHours|jsDate | date:"HH:mm"}}</th>
+                <th style="font-size:14px">
+                    <img src="{{list.PhotoUrl}}" width="120" alt="{{list.Name}}" />
+                </th>
+
+                <th>
+                    <button type="button" class="btn btn-blue" ui-sref="editFacility({facId:list.AccomodationFacilityId })" style="width:30%">
+                    <i class="fa fa-pencil-square-o"></i> EDIT
+                    </button>
+                    <!--<button type="button" class="btn btn-danger" ng-really-message="Are you sure?"
+                            ng-really-click="SRCtrl.SellerService.deleteFacilitie($index)" style="width:30%">
+                        DELETE
+                    </button>-->
+                    <button type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" style="width:30%" data-after-confirm="SRCtrl.SellerService.deleteFacilitie($index)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                          <p>
+                           Are you sure you want to delete ?</p>">
+                        <i class="fa fa-times"></i>
+                      DELETE
+                    </button>
+                    <button style="width:37%;" type="submit" class="btn btn-success" ui-sref="managePhotosFacilities({facilityId:list.AccomodationFacilityId })">
+                        <i class="fa fa-camera"></i>
+                        ADD IMAGE
+                    </button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+
+    <center>
+        <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+    </center>
+</div>
+
+

@@ -1,0 +1,101 @@
+﻿@model BitBooking.DAL.Models.Room
+
+@{
+    
+    Layout = null;}
+<div class="mesidj"></div>
+<div class="zeko">
+  
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "newroom" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Add new Types of Rooms</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumberOfRooms, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumberOfRooms, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumberOfRooms, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RoomCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RoomCapacity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RoomCapacity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RoomTypeId, "RoomTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("RoomTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RoomTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+   
+</div>
+
+
+   <script>
+       $(document).ready(function () {
+
+
+         
+
+           $('#newroom').submit(function (event) {
+               event.preventDefault();
+               var data = $(this).serialize();
+               var url = "/Rooms/Create2"
+
+               $.ajax({ url: url, data: data, method: 'post' }).success(function (msg) {
+                   console.log("proslo2");
+                   $('.mesidj').html("");
+                   var url = "/Rooms/Create2";
+                   $.ajax({ url: url, data: data, method: 'post' }).success(function (msg) {
+                       console.log("proslo kad u zeku");
+                       $('.zeko').html(msg);
+                      // $('.mesidj').html("<p style='color:red'>New Room Type Added!</p>");
+                       //  var studentName = $('a[href="/Students/Details/' + id + ' "]').text();
+                       //$('#student-name').html(studentName);
+                       //console.log(studentName);
+
+                      
+                      
+                   }).error(function (msg) { console.log("fail dole" + msg); });
+                 
+                    
+               }).error(function (msg) { $('.mesidj').html("<p style='color:red'>Please input all fields!</p>"); console.log("fail gore" + msg); });
+           });
+
+
+
+
+
+       });
+</script>

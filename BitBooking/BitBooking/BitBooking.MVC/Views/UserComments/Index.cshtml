@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BitBooking.DAL.Models.UserComment>
+@using BitBooking.DAL.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="table_id">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.ReportCount > 20)
+            {
+                <tr style="background-color:red">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReportCount)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Accomodation.AccomodationName)
+
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Details", "Details", new { id = item.UserCommentId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserCommentId })
+                    </td>
+                </tr>}
+            else
+            {
+                <tr style="background-color:black">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReportCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Accomodation.AccomodationName)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Details", "Details", new { id = item.UserCommentId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserCommentId })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
+@section Scripts{
+
+    <script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+
+    </script>
+
+}

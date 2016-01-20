@@ -1,0 +1,90 @@
+﻿<div class="container">
+    <div class="col-lg-7">
+        <form class="form-horizontal">
+            <h4>Accomodation Info EDIT FORM</h4>
+            <hr>
+
+            <input id="AccomodationInfoId" name="AccomodationInfoId" type="hidden" value="1">
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Address">Address</label>
+                <div class="">
+                    <input class="form-control text-box single-line" id="Address" name="Address" type="text" ng-model="SRCtrl.SellerService.sellerInfoEdit.Address">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="City">City</label>
+                <div class="">
+                    <input class="form-control text-box single-line" id="City" name="City" type="text" ng-model="SRCtrl.SellerService.sellerInfoEdit.City">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="PostalCode">Postal Code</label>
+                <div class="">
+                    <input class="form-control text-box single-line" id="PostalCode" name="PostalCode" type="text" ng-model="SRCtrl.SellerService.sellerInfoEdit.PostalCode">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Country">Country</label>
+                <div class="">
+                    <input class="form-control text-box single-line" id="Country" name="Country" type="text" ng-model="SRCtrl.SellerService.sellerInfoEdit.Country">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Phone">Telephone Number</label>
+                <div class="">
+                    <input class="form-control text-box single-line" id="Phone" name="Phone" type="text" ng-model="SRCtrl.SellerService.sellerInfoEdit.Phone">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Email">Email Address</label>
+                <div class="">
+                    <input class="form-control text-box single-line" id="Email" name="Email" type="text" ng-model="SRCtrl.SellerService.sellerInfoEdit.Email">
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <button style="width:200px" type="submit" ng-click="SRCtrl.SellerService.SaveEditInfo()" class="btn btn-success"><i class="fa fa-floppy-o"></i> SAVE CHANGES</button>
+                </div>
+                <br /><br />
+                <div class="col-md-offset-2 col-md-10">
+                    <button style="width:200px" ui-sref="manager" class="btn btn-danger"><i class="fa fa-home"></i>BACK TO HOME</button>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-lg-5">
+        <br />
+        <div class="alert alert-info" role="alert"> If you want to make changes just pick a new spot!</div>
+
+        <div map-lazy-load="http://maps.google.com/maps/api/js">
+            <div ng-controller="EventArgumentsCtrl">
+                <map name="map" zoom="7" center="{{SRCtrl.SellerService.x}},{{SRCtrl.SellerService.y}}" on-click="placeMarker()">
+
+                </map>
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <br />
+    
+
+</div>

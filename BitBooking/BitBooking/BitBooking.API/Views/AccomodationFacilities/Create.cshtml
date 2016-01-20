@@ -1,0 +1,67 @@
+﻿@model BitBooking.DAL.Models.AccomodationFacility
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<div class="container">
+
+    <h2>Create New Accomodation Facility Form</h2>
+   
+        @Html.AntiForgeryToken()
+
+        <form novalidate="novalidate" ng-submit="SRCtrl.SellerService.newFacilitie()" class="form-horizontal">
+
+    <h4>Accomodation Facility Creation Form</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.facName", @required = "required", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.facDesc", @required = "required", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartHours, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StartHours, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.startHours", @required = "required", @class = "form-control", @ng_time_err_type="invalidTimeFormat" } })
+            @Html.ValidationMessageFor(model => model.StartHours, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndHours, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EndHours, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.endHours", @required = "required", @class = "form-control", @ng_time_err_type = "invalidTimeFormat" } })
+            @Html.ValidationMessageFor(model => model.EndHours, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+    
+
+    <div>
+        <center>
+            <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+        </center>
+    </div>
+
+
+</div>

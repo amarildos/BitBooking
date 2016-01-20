@@ -1,0 +1,63 @@
+﻿@model BitBooking.DAL.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<div class="container body-content destination-info">
+    <div>
+        <h4>My User Profile</h4>
+        <hr />
+        <dl class="dl-horizontal destination-info">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailConfirmed)
+            </dd>
+
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+
+        </dl>
+
+
+
+    </div>
+</div>

@@ -1,0 +1,4 @@
+﻿<div>
+    {{name}}: <input ng-model='amount' /> 
+   
+</div>

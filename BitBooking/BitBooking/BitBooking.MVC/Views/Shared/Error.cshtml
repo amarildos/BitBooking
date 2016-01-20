@@ -1,0 +1,25 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+
+<h2>Not Found</h2>
+
+
+
+<div id="site" class="clearfix">
+
+    Error Details: @Model.Exception.Message
+    <h2>Page Not Found or You have No Access To this page?</h2>
+    <div class="userPrompt">
+        <img src="http://cache.lego.com/r/www/-/media/portal%20v2010/errors/404%20mainstage%20image.jpg?l.r2=1953967734" alt="">
+        <div>
+            <p>Sorry, we can't find that page! It might be an old link or maybe it moved.</p>
+            <a class="btn cancel large blue" href="/"><span class="label">BACK TO  HOME </span><span class="decor"></span></a>
+        </div>
+    </div>
+
+</div>
+

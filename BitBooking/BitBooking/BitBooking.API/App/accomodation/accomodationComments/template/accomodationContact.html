@@ -1,0 +1,46 @@
+﻿<div class="col-md-12">
+
+   
+    <form ng-show="accomodationCommentsCtrl.userService.isLoggedIn" class="form-horizontal" role="form">
+        <div class="form-horizontal">
+            <div class="letters ">
+                <center>
+                    <h8>Contact us</h8>
+                    <p>Would you like to get in touch with us? We are here to help! Contact us and we will answer asap.</p>
+                </center>
+                </div>
+            <hr /><br /><br />
+                <!--<div class="form-group">
+                    <div class="col-md-12">
+                        <center>
+                            <div class="col-md-10">
+                                <textarea maxlength="500" id="commm" ng-model="accomodationCommentsCtrl.accomodationService.Message" class="form-control-commm" rows="3" placeholder="Please enter your message here." required></textarea>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-default btn-sm" ng-click="accomodationCommentsCtrl.accomodationService.SendMessage()">Send message</button>
+                            </div>
+                        </center>
+                    </div>
+                </div>-->
+
+            <div class="col-md-6 textarea">
+                <!--<form>-->
+                    <textarea class="wow fadeInRight" ng-model="accomodationCommentsCtrl.accomodationService.Message"
+                              data-wow-delay="0.5s" placeholder="Please enter Your message here." required="required">
+                        
+                    </textarea>
+                <center>
+                    <input class="wow fadeInRight" data-wow-delay="0.5s" type="submit" value="SUBMIT QUESTION"
+                           ng-click="accomodationCommentsCtrl.accomodationService.SendMessage()" />
+                </center>
+                <!--</form>-->
+            </div>
+
+
+            </div>
+    </form>
+    <div class="letters">
+        <div ng-hide="accomodationCommentsCtrl.userService.isLoggedIn"><center><h8>You are not logged in!</h8>
+            <p>Please logg in to send a message.</p></center></div>
+        </div>
+    </div>
