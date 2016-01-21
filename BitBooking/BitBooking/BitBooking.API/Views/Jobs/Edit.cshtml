@@ -1,0 +1,60 @@
+﻿@model BitBooking.DAL.Models.Job
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+
+<div class="container">
+    <form novalidate="novalidate" ng-submit="SRCtrl.SellerService.editJob()" class="form-horizontal">
+
+        <div class="form-horizontal">
+
+            <div class="form-horizontal">
+                <h4>Job</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.JobId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditJob.Name", @required = "required", @class = "form-control", @type = "string" } })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditJob.Description", @required = "required", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Salary, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @ng_model = "SRCtrl.SellerService.currentEditJob.Salary", @required = "required", @class = "form-control", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.Salary)
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+            
+            <hr /><br />
+            <div>
+                <center>
+                    <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+                </center>
+            </div>
+        </div>

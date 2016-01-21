@@ -73,6 +73,8 @@ namespace BitBooking.DAL.Models
 
         public System.Data.Entity.DbSet<BitBooking.DAL.Models.Promotion> Promotions { get; set; }
 
+        public System.Data.Entity.DbSet<BitBooking.DAL.Models.Job> Jobs { get; set; }
+
       //  public System.Data.Entity.DbSet<BitBooking.DAL.Models.ApplicationUser> ApplicationUsers { get; set; }
 
         //public System.Data.Entity.DbSet<BitBooking.DAL.Models.ReserveRoom> ReservedRooms { get; set; }

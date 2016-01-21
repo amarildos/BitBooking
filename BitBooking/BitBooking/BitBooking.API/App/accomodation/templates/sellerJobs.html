@@ -1,0 +1,57 @@
+﻿<div class="container">
+
+    <br /><br /><hr />
+    <div class="letters">
+        <center>
+            <h8>- Manage Your JOBS -</h8>
+        </center>
+    </div><hr /><br />
+
+
+
+    <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs" class="table table-hover">
+
+        <thead>
+            <tr class="info">
+                <th style="font-size:16px">Position</th>
+                <th style="font-size:16px">Description</th>
+                <th style="font-size:16px">Salary</th>
+                <th style="font-size:16px">Options</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="" ng-repeat="list in SRCtrl.SellerService.sellerJobs">
+                <th style="font-size:14px">{{list.Description}}</th>
+                <th style="font-size:14px">{{list.Name}}</th>
+                <th style="font-size:14px">{{list.Salary | number:2}} USD</th>
+             
+                <th style="font-size:14px">
+                    <!--<button type="button" class="btn btn-danger" ng-really-message="Are you sure?"
+                            ng-really-click="SRCtrl.SellerService.deleteOffer($index)">
+                        DELETE
+                    </button>-->
+
+                    <button value="delete" type="button" data-nq-modal-box="" data-box-type="confirm" class="btn btn-danger" data-after-confirm="SRCtrl.SellerService.deleteJob($index)" data-qo-effect="fade-in" data-qo-theme="warning" data-qs-content="
+                        <p>
+                            Are you sure you want to delete ?
+                        </p>">
+                        <i class="fa fa-times"></i>
+                        DELETE
+                    </button>
+                    <button type="button" class="btn btn-blue" ui-sref="editJob({jobId:list.JobId })" style="width:30%"> EDIT </button>
+</th>
+            </tr>
+        </tbody>
+    </table>
+    <hr /><br />
+    <center>
+        <button class="btn btn-lg" ui-sref="manager">Back to Manager Home</button>
+    </center>
+
+
+
+
+
+
+</div>

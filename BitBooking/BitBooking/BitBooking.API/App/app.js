@@ -422,7 +422,7 @@
             }
         })
               .state("sellerRooms", {
-                  url: "/MyRooms",
+                  url: "/rooms",
                   templateUrl: "/App/accomodation/templates/rooms.html",
                   controller: "sellerRoomController",
                   controllerAs: "SRCtrl"
@@ -469,11 +469,17 @@
                 controllerAs: "SRCtrl"
             })
               .state("newRoom", {
-                url: "/newRoom",
+                url: "/rooms/Add",
                 templateUrl: "/Rooms/Create",
                 controller: "sellerRoomController",
                 controllerAs: "SRCtrl"
               })
+                 .state("sellerJobNew", {
+                     url: "/newJob",
+                     templateUrl: "/Jobs/Create",
+                     controller: "sellerRoomController",
+                     controllerAs: "SRCtrl"
+                 })
                .state("editRoom", {
                    url: "/editRoom/:roomId",
                    templateUrl: function ($stateParams, SellerService) {
@@ -483,6 +489,15 @@
                    controller: "sellerRoomController",
                    controllerAs: "SRCtrl"
                })
+                   .state("editJob", {
+                       url: "/editJob/:jobId",
+                       templateUrl: function ($stateParams, SellerService) {
+
+                           return 'Jobs/Edit/' + $stateParams.jobId + '';
+                       },
+                       controller: "sellerRoomController",
+                       controllerAs: "SRCtrl"
+                   })
             .state("editFacility", {
                 url: "/editFacility/:facId",
                 templateUrl: function ($stateParams, SellerService) {
@@ -508,6 +523,12 @@
               .state("sellerFacilities", {
                   url: "/Facilities",
                   templateUrl: "/App/accomodation/templates/sellerFacilities.html",
+                  controller: "sellerRoomController",
+                  controllerAs: "SRCtrl"
+              })
+              .state("sellerJobs", {
+                  url: "/Jobs",
+                  templateUrl: "/App/accomodation/templates/sellerJobs.html",
                   controller: "sellerRoomController",
                   controllerAs: "SRCtrl"
               })
@@ -604,7 +625,10 @@
         .state("paymentConfirmation", {
             url: "/paymentConfirmation",
             templateUrl: "/App/accomodation/templates/paymentConfirmation.html"
-        })
+        }).state("noaccess", {
+                    url: "/error",
+                    templateUrl: "/App/accomodation/templates/error.html"
+                })
         .state("paymentCanceled", {
             url: "/paymentCanceled",
             templateUrl: "/App/accomodation/templates/paymentCanceled.html"
@@ -1046,6 +1070,9 @@
               self.sellerServices = [];
               self.sellerPrices = [];
               self.sellerReservations = [];
+              self.sellerJobs = [];
+              self.newJob = newJob;
+              self.editJob = editJob;
 
               self.getRooms = getRooms;
               self.getRoomsForPhotos = getRoomsForPhotos;
@@ -1056,7 +1083,7 @@
               self.getInfo = getInfo;
               self.getInfoEditData = getInfoEditData;
               self.getFacilities = getFacilities;
-              
+              self.getJobs = getJobs;
               self.dateFrom = "";
               self.dateTo = "";
               self.newSpecialPrice = newSpecialPrice;
@@ -1076,12 +1103,17 @@
               self.roomNumber = "";
               self.roomCapacity = "";
               self.roomPrice = "";
+              self.jobName = "";
+              self.jobDescription = "";
+              self.jobSallary = "";
+
               self.x = "";
               self.y = "";
               self.xx = "";
               self.yy= "";
               self.deleteService = deleteService;
               self.deleteFacilitie = deleteFacilitie;
+              self.deleteJob = deleteJob;
               self.deleteOffer = deleteOffer;
               self.map = { center: { latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
               self.options = { scrollwheel: false };
@@ -1096,12 +1128,14 @@
               self.RoomTypeId = "";
               self.Priority = "";
               self.currentEditRoom = "";
+              self.currentEditJob = "";
               self.currentEditFac = "";
               self.showPhotoPage = showPhotoPage;
               self.editRoom = editRoom;
               self.editFacilitie = editFacilitie;
               self.deletePhoto = deletePhoto;
               self.deleteRoom = deleteRoom;
+            
 
               function deleteRoom(index)
               {
@@ -1136,6 +1170,18 @@
                       growl.success("Changes Saved ");
                        getFacilities();
                           
+                  });
+
+
+              };
+              function editJob() {
+
+
+                  $http.post("Jobs/Edit", self.currentEditJob).then(function (e) {
+
+                      growl.success("Changes Saved ");
+                      getJobs();
+
                   });
 
 
@@ -1205,6 +1251,19 @@
 
               };
 
+              function deleteJob(index) {
+
+                  //console.log(index);
+                  $http.post("/Jobs/Delete/" + self.sellerJobs[index].JobId)
+                      .then(function (response) {
+                          //console.log("proslo");
+                          self.sellerJobs.splice(index, 1);
+                      })
+
+                  //  getServices();
+
+              };
+
 
               function deleteFacilitie(index)
               {
@@ -1228,6 +1287,22 @@
                       getRooms();
                   });
               };
+
+
+
+              function newJob() {
+                  var dataTosend = { Name: self.jobName, Description: self.jobDescription, Salary: self.jobSallary }
+
+                  $http.post("/Jobs/Create/", dataTosend).then(function (response) {
+                      self.jobName = "";
+                      self.jobDescription = "";
+                      self.jobSallary = "";
+                    
+                      growl.success("Successfully added new job! ");
+                      getJobs();
+                  });
+              };
+
 
               function newService()
               {
@@ -1298,6 +1373,14 @@
                       self.sellerFacilities = response.data;
                       //console.log("FACILITIES: ", response.data);
                       $state.go("sellerFacilities")
+                  });
+              };
+
+              function getJobs() {
+                  $http.get("/Jobs/Index").then(function (response) {
+                      self.sellerJobs = response.data;
+                      console.log(response.data);
+                      $state.go("sellerJobs")
                   });
               };
 
@@ -1390,6 +1473,7 @@
         self.SellerService = SellerService;
         self.getRoomEdit = getRoomEdit;
         getRoomEdit();
+        getJobEdit();
         self.getFacEdit = getFacEdit;
         getFacEdit();
         self.getInfo=getInfo;
@@ -1403,7 +1487,13 @@
             $http.get("/Accomodations/GetName").then(function (response) {
                 self.SellerService.info = response.data;
 
-                //console.log(response.data);
+                if (!response.data.AccomodationId > 0)
+                {
+                    $state.go("noaccess");
+                }
+               // console.log(response.data);
+                // console.log("test");
+
             });
 
         };
@@ -1418,6 +1508,19 @@
 
                 $http.get("Rooms/EditData/" + $state.params.roomId).then(function (e) {
                     SellerService.currentEditRoom = e.data;
+                    //console.log(e.data);
+                });
+
+            };
+        };
+
+        function getJobEdit() {
+
+
+            if ($state.params.jobId > 0) {
+
+                $http.get("Jobs/EditData/" + $state.params.jobId).then(function (e) {
+                    SellerService.currentEditJob = e.data;
                     //console.log(e.data);
                 });
 

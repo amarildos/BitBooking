@@ -219,6 +219,7 @@
     <Compile Include="Controllers\AccomodationTypesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Controllers\PhotosApiController.cs" />
@@ -260,6 +261,7 @@
     <Content Include="App\accomodation\accomodationPhotos\accomodationPhotosController.js" />
     <Content Include="App\accomodation\accomodationPhotos\photosFacilities.html" />
     <Content Include="App\accomodation\templates\about.html" />
+    <Content Include="App\accomodation\templates\error.html" />
     <Content Include="App\accomodation\templates\inbox.html" />
     <Content Include="App\accomodation\templates\infoSeller.html" />
     <Content Include="App\accomodation\templates\login.html" />
@@ -280,6 +282,7 @@
     <Content Include="App\accomodation\templates\searchResultsConfirmation.html" />
     <Content Include="App\accomodation\templates\sellerFacilities.html" />
     <Content Include="App\accomodation\templates\sellerInfoEdit.html" />
+    <Content Include="App\accomodation\templates\sellerJobs.html" />
     <Content Include="App\accomodation\templates\servicesSeller.html" />
     <Content Include="App\app.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -623,6 +626,11 @@
     <Content Include="Views\Home\ProfilePage.cshtml" />
     <Content Include="Views\Home\IndexTestOld.cshtml" />
     <Content Include="Views\Home\IndexTest.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

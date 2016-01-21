@@ -67,8 +67,8 @@ namespace BitBooking.API.Controllers
             catch (Exception e)
             {
 
-                throw new UnauthorizedAccessException(e.Message);
-
+                //throw new UnauthorizedAccessException(e.Message);
+                return Json(null);
             };
         }
 

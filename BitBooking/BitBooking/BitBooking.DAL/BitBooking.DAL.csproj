@@ -104,6 +104,7 @@
     <Compile Include="Models\AccomodationType.cs" />
     <Compile Include="Models\CommentUserReport.cs" />
     <Compile Include="Models\InvitationEmail.cs" />
+    <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Promotion.cs" />
